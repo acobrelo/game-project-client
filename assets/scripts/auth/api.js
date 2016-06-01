@@ -37,6 +37,16 @@ const changePassword = function (data) {
     data: data,
   });
   };
+
+const createGame = function () {
+  return $.ajax ({
+    url: app.host + '/games/',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
 //app.user.is works even though it isnt defined because it's
 //defined when you sign in so that's FINE to use. Ditto the token.
 //it's already there. so relax. app.host app is different than the app.user app
@@ -46,4 +56,5 @@ module.exports = {
   signIn,
   signOut,
   changePassword,
+  createGame,
 };
