@@ -1,2 +1,36 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap/';
+<<<<<<< HEAD
+=======
+
+$border-color: #000;
+
+
+.container {
+  margin: auto 25%;
+  width: 50%;
+}
+
+section {
+  @include make-row();
+  div {
+    @include make-lg-column(4);
+    @include make-md-column(4);
+    @include make-sm-column(4);
+    @include make-xs-column(4);
+    border: 1px solid $border-color;
+    height: 16.666vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    margin: auto 5%;
+    width: 90%;
+
+    div {
+      height: 30vw;
+    }
+  }
+}
+>>>>>>> html

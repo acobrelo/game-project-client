@@ -36,19 +36,17 @@ const onChangePassword =  function (event) {
   .fail(ui.failure);
 };
 
-const onLoopIn = function (event) {
-  event.preventDefault();
-  ui.loopIn();
-};
+//const onSelectHouse = function () {
+  //event.preventDefault()
+  //let player1 =
+//}
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
-  $('.loop-in').on('submit', onLoopIn);
 };
-
 
 module.exports = {
   addHandlers,
