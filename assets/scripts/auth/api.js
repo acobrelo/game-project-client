@@ -47,6 +47,7 @@ const createGame = function () {
     },
   });
 };
+//no data: data used here, check on that later?
 //app.user.is works even though it isnt defined because it's
 //defined when you sign in so that's FINE to use. Ditto the token.
 //it's already there. so relax. app.host app is different than the app.user app

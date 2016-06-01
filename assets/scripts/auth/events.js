@@ -36,6 +36,12 @@ const onChangePassword =  function (event) {
   .fail(ui.failure);
 };
 
+const onCreateGame = function (event) {
+  event.preventDefault();
+  api.createGame()
+  .done(ui.success)
+  .fail(ui.failure);
+};
 //const onSelectHouse = function () {
   //event.preventDefault()
   //let player1 =
@@ -46,6 +52,7 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn);
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
+  $('#create-game').on('click', onCreateGame);
 };
 
 module.exports = {
