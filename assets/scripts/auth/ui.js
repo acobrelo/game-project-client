@@ -4,7 +4,7 @@ const app = require('../app.js');
 
 const success = (data) => {
   console.log(data);
-  $('#sign-up').children().children('.bye').val("");
+  $('#account-options').find('.bye').val("");
 };
 
 const failure = (error) => {
@@ -14,12 +14,12 @@ const failure = (error) => {
 const signInSuccess = function (data) {
   app.user = data.user;
   console.log(app);
-  $('#sign-in').children().children('.bye').val("");
+  $('#account-options').find('.bye').val("");
 };
 
 const changePasswordSuccess = function (data) {
   console.log(data);
-  $('#change-password').children().children('.bye').val("");
+  $('#account-options').find('.bye').val("");
 };
 //here, we're basically saying we're calling our data app from now on to
 //call things later, such as in sign out process

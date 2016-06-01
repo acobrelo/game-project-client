@@ -1,47 +1,64 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
-
+      <title>Tic Tac Thrones</title>
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
     <body class="container-fluid">
-      <form id="sign-up">
-        <fieldset>
-          <legend>Sign up!</legend>
-          <input type="text" class="bye" name="credentials[email]" placeholder="Enter Email">
-          <input type="password" class="bye" name="credentials[password]" placeholder="Enter Password">
-          <input type="password" class="bye" name="credentials[password_confirmation]" placeholder="Confirm Password">
-          <input type="submit" name="submit" value="Sign up!">
-        </fieldset>
-      </form>
+<!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#account-options">
+        Account Options
+      </button>
+<!-- Modal -->
+    <div class="modal fade" id="account-options" tabindex="-1" role="dialog" aria-labelledby="accountOptionsLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="accountOptionsLabel">Account Options</h4>
+          </div>
+        <div class="modal-body">
+          <form id="sign-up">
+            <fieldset>
+              <p>Sign up!</p>
+              <input type="text" class="bye" name="credentials[email]" placeholder="Enter Email">
+              <input type="password" class="bye" name="credentials[password]" placeholder="Enter Password">
+              <input type="password" class="bye" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="submit" name="submit" value="Sign up!">
+            </fieldset>
+          </form>
+          <form id="sign-in">
+            <fieldset>
+              <p>Sign In</p>
+              <input type="text" class="bye" name="credentials[email]" placeholder="Enter Email">
+              <input type="password" class="bye" name="credentials[password]" placeholder="Enter Password">
+              <input type="submit" name="submit" value="Sign in!">
+            </fieldset>
+          </form>
+          <form id="sign-out">
+            <fieldset>
+              <p>Sign Out</p>
+              <input type="submit" name="submit" value="Sign out!">
+            </fieldset>
+          </form>
+          <form id="change-password">
+            <fieldset>
+              <p>Change Password</p>
+              <input type="password" class="bye" name="passwords[old]" placeholder="Old Password">
+              <input type="password" class="bye" name="passwords[new]" placeholder="New Password">
+              <input type="submit" name="submit" value="Change Password">
+            </fieldset>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-      <form id="sign-in">
-        <fieldset>
-          <legend>Sign In</legend>
-          <input type="text" class="bye" name="credentials[email]" placeholder="Enter Email">
-          <input type="password" class="bye" name="credentials[password]" placeholder="Enter Password">
-          <input type="submit" name="submit" value="Sign in!">
-        </fieldset>
-      </form>
 
-      <form id="sign-out">
-        <fieldset>
-          <legend>Sign Out</legend>
-          <input type="submit" name="submit" value="Sign out!">
-        </fieldset>
-      </form>
-
-      <form id="change-password">
-        <fieldset>
-          <legend>Change Password</legend>
-          <input type="password" class="bye" name="passwords[old]" placeholder="Old Password">
-          <input type="password" class="bye" name="passwords[new]" placeholder="New Password">
-          <input type="submit" name="submit" value="Change Password">
-        </fieldset>
-      </form>
-
+      <div class="character-select">
+      </div>
       <h1>Tic Tac Thrones</h1>
 
       <div class="container">
@@ -58,6 +75,6 @@
         </article>
       </div>
 
-      <
+
     </body>
 </html>
