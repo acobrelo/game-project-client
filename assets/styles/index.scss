@@ -3,18 +3,15 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 $border-color: #000;
 
-div {
-  border: 1px solid $border-color;
-}
 
 .container {
   margin: auto 25%;
   width: 50%;
 }
 
-article {
+section {
   @include make-row();
-  section {
+  div {
     @include make-lg-column(4);
     @include make-md-column(4);
     @include make-sm-column(4);
@@ -29,7 +26,7 @@ article {
     margin: auto 5%;
     width: 90%;
 
-    section {
+    div {
       height: 30vw;
     }
   }
