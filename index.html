@@ -12,15 +12,15 @@
         Account Options
       </button>
 <!-- Modal -->
-    <div class="modal fade" id="account-options" tabindex="-1" role="dialog" aria-labelledby="accountOptionsLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="accountOptionsLabel">Account Options</h4>
-          </div>
-        <div class="modal-body">
-          <form id="sign-up">
+      <div class="modal fade" id="account-options" tabindex="-1" role="dialog" aria-labelledby="accountOptionsLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="accountOptionsLabel">Account Options</h4>
+            </div>
+            <div class="modal-body">
+            <form id="sign-up">
             <fieldset>
               <p>Sign up!</p>
               <input type="text" class="bye" name="credentials[email]" placeholder="Enter Email">
@@ -56,9 +56,30 @@
   </div>
 </div>
 
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#character-select">
+      Select House
+    </button>
+<!-- Modal -->
+      <div class="modal fade" id="character-select" tabindex="-1" role="dialog" aria-labelledby="characterSelectLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="characterSelectLabel">Choose Your House</h4>
+              </div>
+              <div class="modal-body">
+                <form id="house-choice">
+                  <fieldset>
+                    <input type="button" value="House Stark">
+                    <input  type="button" value="House Lannister">
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="character-select">
-      </div>
       <h1>Tic Tac Thrones</h1>
 
       <div class="container">

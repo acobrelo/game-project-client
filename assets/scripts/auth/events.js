@@ -36,6 +36,11 @@ const onChangePassword =  function (event) {
   .fail(ui.failure);
 };
 
+//const onSelectHouse = function () {
+  //event.preventDefault()
+  //let player1 =
+//}
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);

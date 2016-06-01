@@ -7,10 +7,30 @@ div {
   border: 1px solid $border-color;
 }
 
+.container {
+  margin: auto 25%;
+  width: 50%;
+}
+
 article {
-  @include make-row ();
+  @include make-row();
   section {
+    @include make-lg-column(4);
+    @include make-md-column(4);
+    @include make-sm-column(4);
     @include make-xs-column(4);
     border: 1px solid $border-color;
+    height: 16.666vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    margin: auto 5%;
+    width: 90%;
+
+    section {
+      height: 30vw;
+    }
   }
 }
