@@ -48,6 +48,29 @@ const createGame = function () {
   });
 };
 //no data: data used here, check on that later?
+const addPlayer = function () {
+  return $.ajax ({
+    url: app.host + '/games/' + app.user.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
+//notes on adding player: going to bind it to one of the buttons for char select
+
+const updateGame = function (data) {
+  return $.ajax ({
+    url: app.host + '/games/' + app.user.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: data,
+  });
+};
+
 //app.user.is works even though it isnt defined because it's
 //defined when you sign in so that's FINE to use. Ditto the token.
 //it's already there. so relax. app.host app is different than the app.user app
@@ -58,4 +81,6 @@ module.exports = {
   signOut,
   changePassword,
   createGame,
+  addPlayer,
+  updateGame,
 };
