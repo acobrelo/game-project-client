@@ -1,6 +1,7 @@
 'use strict';
 
 const app = require('../app.js');
+const gameLogic = require('./gamelogic');
 
 const success = (data) => {
   console.log(data);
@@ -30,9 +31,12 @@ const displayGame = function (data) {
 
 const newGameSuccess = function (data) {
   app.game = data.game;
+  gameLogic.boardArray = gameLogic.initialBoard;
   console.log(app);
+  $('#update-game').text("");
 };
 
+//newGameSuccess meansresetting the text in the baord to initial board logic 
 //const addPlayerSuccess = function (data) {
   //console.log("hi" + data);
 //};
