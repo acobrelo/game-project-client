@@ -33,10 +33,14 @@ const newGameSuccess = function (data) {
   app.game = data.game;
   gameLogic.boardArray = gameLogic.initialBoard;
   console.log(app);
-  $('#update-game').text("");
 };
 
-//newGameSuccess meansresetting the text in the baord to initial board logic 
+//want to return the index of the square
+
+//const findIndex = function (data) {
+  //gameLogic.arrayKey.indexOf(data)
+//}
+//newGameSuccess meansresetting the text in the baord to initial board logic
 //const addPlayerSuccess = function (data) {
   //console.log("hi" + data);
 //};
@@ -48,6 +52,7 @@ const uiMethods = {
   signOutSuccess,
   displayGame,
   newGameSuccess,
+  //whichSquare,
 };
 
 module.exports = uiMethods;

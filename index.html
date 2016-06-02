@@ -87,21 +87,20 @@
 
       <div class="container" id="update-game">
         <section>
-          <div class="rowA col1">
+          <div class="board" id="a1"></div>
+          <div class="board" id="a2"></div>
+          <div class="board" id="a3"></div>
+          <div class="board" id="b1"></div>
+          <div class="board" id="b2"></div>
+          <div class="board" id="b3"></div>
+          <div class="board" id="c1"></div>
+          <div class="board" id="c2"></div>
+          <div class="board" id="c3"></div>
           <form>
-              <input name="game[cell][index]" type="text" value="0">
-              <input name="game[cell][value]" type="text" value="x">
-              <input name="game[over]" type="text" value="false">
+            <input id="index" name="game[cell][index]" type="text" value="">
+            <input id="move" name="game[cell][value]" type="text" value="">
+            <input name="game[over]" type="text" value="false">
           </form>
-        </div>
-          <div class="rowA col2"></div>
-          <div class="rowA col3"></div>
-          <div class="rowB col1"></div>
-          <div class="rowB col2"></div>
-          <div class="rowB col3"></div>
-          <div class="rowC col1"></div>
-          <div class="rowC col2"></div>
-          <div class="rowC col3"></div>
         </section>
       </div>
 
