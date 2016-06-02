@@ -1,6 +1,7 @@
 'use strict';
 const app = require('../app.js');
 
+
 const signUp = (data) => {
   return $.ajax ({
     url: app.host + '/sign-up/',
@@ -38,31 +39,44 @@ const changePassword = function (data) {
   });
   };
 
-const createGame = function () {
+const indexOfGames = function () {
+  return $.ajax({
+    url: app.host + '/games[?over=]/',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
+const showGame = function () {
+  return $.ajax({
+    url: app.host + '/games/' + app.game.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
+const createGame = function (data) {
   return $.ajax ({
     url: app.host + '/games/',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
+    data: data,
   });
 };
 //no data: data used here, check on that later?
-const addPlayer = function () {
-  return $.ajax ({
-    url: app.host + '/games/' + app.user.id,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + app.user.token,
-    },
-  });
-};
 
 //notes on adding player: going to bind it to one of the buttons for char select
+//when you call addplayer, acts on form, data is whatever is in the form
 
 const updateGame = function (data) {
   return $.ajax ({
-    url: app.host + '/games/' + app.user.id,
+    url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + app.user.token,
@@ -80,7 +94,8 @@ module.exports = {
   signIn,
   signOut,
   changePassword,
+  indexOfGames,
+  showGame,
   createGame,
-  addPlayer,
   updateGame,
 };
