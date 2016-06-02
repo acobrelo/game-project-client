@@ -7,6 +7,7 @@ const initialBoard = ['', '', '', '', '', '','', '', ''];
 const arrayKey = ['a1','a2','a3','b1','b2','b3','c1','c2','c3'];
 //this board can get updated
 let boardArray = ['', '', '', '', '', '','', '', ''];
+let recentIndex = null;
 
 
 //figure out if turn is "x" or "o"
@@ -33,6 +34,7 @@ module.exports = {
   boardArray,
   initialBoard,
   arrayKey,
+  recentIndex,
   //whoGoes,
   //increaseTurn,
 };

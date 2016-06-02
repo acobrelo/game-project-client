@@ -3,7 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
-//const gameLogic = require('./gamelogic');
+const gameLogic = require('./gamelogic');
 
 const onSignUp = function (event) {
   event.preventDefault();
@@ -50,15 +50,22 @@ const onCreateGame = function (event) {
   .fail(ui.failure);
 };
 
-//make data invisible
-//const onUpdateGame = function (event) {
-  //event.preventDefault();
-  //let data = getFormFields(event.target);
-  //api.updateGame(data)
-  //.done(ui.success)
-  //.fail(ui.failure);
-//};
+const onGetCell = function (event) {
+  event.preventDefault();
+  let cellID = $(this).attr('id');
+  let index = gameLogic.arrayKey.indexOf(cellID);
+  gameLogic.recentIndex = index;
+  $('#toUpdate').find('.index').val(index);
+  gameLogic.boardArray[($('#toUpdate').find('.index').val())] = "x";
+  console.log(gameLogic.recentIndex);
+};
 
+const update = function (event) {
+  event.preventDefault();
+  api.updateGame()
+  .done(ui.displayGame)
+  .fail(ui.failure);
+};
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
@@ -67,10 +74,8 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('#show-game').on('click', onShowGame);
   $('#create-game').on('click', onCreateGame);
-  $('.board').click(function () {
-    let index = $(this).attr('id');
-    console.log(index);
-  });
+  $('.board').on('click', onGetCell);
+  $('#toUpdate').on('click', update);
 };
 
 module.exports = {

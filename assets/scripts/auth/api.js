@@ -1,6 +1,6 @@
 'use strict';
 const app = require('../app.js');
-
+const gameLogic = require('./gamelogic');
 
 const signUp = (data) => {
   return $.ajax ({
@@ -74,14 +74,23 @@ const createGame = function (data) {
 //notes on adding player: going to bind it to one of the buttons for char select
 //when you call addplayer, acts on form, data is whatever is in the form
 
-const updateGame = function (data) {
+const updateGame = function () {
+  let index = gameLogic.recentIndex;
   return $.ajax ({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
-    data: data,
+    data: {
+      "game": {
+	        "cell": {
+	          "index": index,
+	          "value": "x"
+	        },
+	        "over": "false"
+	      }
+	    },
   });
 };
 
