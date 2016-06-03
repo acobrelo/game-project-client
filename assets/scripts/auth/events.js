@@ -50,16 +50,22 @@ const onCreateGame = function (event) {
   .fail(ui.failure);
 };
 
-const onGetCell = function (event) {
+const onSetValues = function (event) {
   event.preventDefault();
   let cellID = $(this).attr('id');
   let index = gameLogic.arrayKey.indexOf(cellID);
   gameLogic.recentIndex = index;
   $('#toUpdate').find('.index').val(index);
-  gameLogic.boardArray[($('#toUpdate').find('.index').val())] = "x";
-  console.log(gameLogic.recentIndex);
+  let whoseMove = gameLogic.turn;
+  gameLogic.currentMove = gameLogic.player[whoseMove];
+  $('#' + cellID).html(gameLogic.currentMove);
+  gameLogic.turn = (gameLogic.turn + 1);
+  console.log(whoseMove);
 };
 
+//we know the recent index updates, we know the turn updates.
+//the value of index is set on the html
+//
 const update = function (event) {
   event.preventDefault();
   api.updateGame()
@@ -74,7 +80,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('#show-game').on('click', onShowGame);
   $('#create-game').on('click', onCreateGame);
-  $('.board').on('click', onGetCell);
+  $('.board').on('click', onSetValues);
   $('#toUpdate').on('click', update);
 };
 

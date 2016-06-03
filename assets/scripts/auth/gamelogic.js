@@ -9,23 +9,14 @@ const arrayKey = ['a1','a2','a3','b1','b2','b3','c1','c2','c3'];
 let boardArray = ['', '', '', '', '', '','', '', ''];
 let recentIndex = null;
 
+const player = ['x','o','x','o','x','o','x','o','x'];
+let currentMove = null;
+
 
 //figure out if turn is "x" or "o"
 //if the value of turn is even, it is x. bold Player 1
 //turn%2=0 when even, so player o turn%2 not 0 means odd so player x.
 //this works
-//const whoGoes = function () {
-//  let activeMove = 'x';
-//  if (turn%2 === 0) {
-//    activeMove = 'o';
-  //}
-//  return activeMove;
-//};
-
-//now, increase turn counter with each move.
-
-
-
 
 
 
@@ -35,6 +26,6 @@ module.exports = {
   initialBoard,
   arrayKey,
   recentIndex,
-  //whoGoes,
-  //increaseTurn,
+  player,
+  currentMove,
 };

@@ -35,11 +35,9 @@ const newGameSuccess = function (data) {
   console.log(app);
 };
 
+
 //want to return the index of the square
 
-//const findIndex = function (data) {
-  //gameLogic.arrayKey.indexOf(data)
-//}
 //newGameSuccess meansresetting the text in the baord to initial board logic
 //const addPlayerSuccess = function (data) {
   //console.log("hi" + data);
