@@ -32,6 +32,7 @@ const displayGame = function (data) {
 const newGameSuccess = function (data) {
   app.game = data.game;
   gameLogic.boardArray = gameLogic.initialBoard;
+  $('#update-game').children().children('.board').text("");
   console.log(app);
 };
 
