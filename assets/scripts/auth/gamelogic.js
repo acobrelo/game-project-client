@@ -6,59 +6,51 @@ let turn = 0;
 const initialBoard = ['', '', '', '', '', '','', '', ''];
 const arrayKey = ['a1','a2','a3','b1','b2','b3','c1','c2','c3'];
 //this board can get updated
-let boardArray = ['', '', '', '', '', '','', '', ''];
+let boardArray = ['o', '', 'x', '', 'o', 'o','', 'x', 'o'];
 let recentIndex = null;
 
 const player = ['x','o','x','o','x','o','x','o','x'];
 let currentMove = null;
-let rowWin;
-let colWin;
-let diaWin;
+
+let winRow = {
+  isWon: false,
+  checkIt: function () {
+  for (let i = 0; i < boardArray.length; i += 3) {
+    if ((boardArray[i] === boardArray[i + 1]) && (boardArray[i] === boardArray[i + 2]) && (boardArray[i] !== '')) {
+      winRow.isWon = true;
+    }
+  }
+},
+};
+
+let winCol = {
+  isWon: false,
+  checkIt: function () {
+  for (let i = 0; i < 3; i+=1) {
+    if ((boardArray[i] === boardArray[i + 3]) && (boardArray[i] === boardArray[i + 6]) && (boardArray[i] !== '')) {
+      winCol.isWon = true;
+    }
+  }
+},
+};
+
+
+let winDia = {
+  isWon: false,
+  checkIt: function () {
+  if (((boardArray[0] === boardArray[4]) && (boardArray[4] === boardArray[8])) || ((boardArray[2] === boardArray[4]) && (boardArray[4]=== boardArray[6]))) {
+    winDia.isWon = true;
+  }
+},
+};
 
 const isWinner = function () {
-  if ((rowWin === true || colWin === true || diaWin === true) && (turn === 9)) {
+  if ((winRow.isWon === true || winCol.isWon === true || winDia.isWon === true)) {
     console.log("game is won");
   } else {
     console.log("keep going");
   }
-  return isWinner;
 };
-
-const winRow = function () {
-  for (let i = 0; i < 9; i+=3) {
-    if (boardArray[i] === boardArray[i + 1] === boardArray[i + 2]) {
-      rowWin = true;
-    } else {
-      rowWin = false;
-    }
-  }
-    return rowWin;
-};
-
-const winCol = function () {
-  for (let i = 0; i < 3; i+=1) {
-    if (boardArray[i] === boardArray[i + 3] === boardArray[i + 3]) {
-      colWin = true;
-    } else {
-      colWin = false;
-    }
-  }
-  return colWin;
-};
-
-
-//for win col, i needs to be less than 3
-
-const winDia = function () {
-  if ((boardArray[0] === boardArray[4] === boardArray[8]) || (boardArray[2] === boardArray[4] === boardArray[6])) {
-    diaWin = true;
-  } else {
-    diaWin = false;
-    }
-  return diaWin;
-};
-
-
 
 //next, what I want to do is display win condition. update the board array to reflect the
 //current state, then set win conditions.
@@ -76,8 +68,5 @@ module.exports = {
   winDia,
   winRow,
   winCol,
-  diaWin,
-  colWin,
-  rowWin,
   isWinner,
 };

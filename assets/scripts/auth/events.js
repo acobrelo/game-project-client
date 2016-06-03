@@ -63,9 +63,14 @@ const onUpdateBoard = function (event) {
   gameLogic.turn = (gameLogic.turn + 1);
   $('#toUpdate').find('.move').val(currentMove);
   gameLogic.boardArray[index] = currentMove;
-  api.updateGame()
-  .done(ui.displayGame)
-  .fail(ui.failure);
+  gameLogic.winRow.checkIt();
+  //gameLogic.winCol.checkIt();
+  //gameLogic.winDia.checkIt();
+//  gameLogic.isWinner();
+  api.updateGame();
+  //.done(ui.displayGame)
+  //.fail(ui.failure);
+  console.log(gameLogic.winRow.isWon);
 };
 //Notes: this will take the square clicked, find the index of the ID in the gameLogic board
 //simulation, make the form for API communication index is set,
