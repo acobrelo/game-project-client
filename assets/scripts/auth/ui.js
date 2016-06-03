@@ -35,8 +35,10 @@ const newGameSuccess = function (data) {
   console.log(app);
 };
 
+//const isWinner = function (){
+//  if gameLogic.
+//}
 
-//want to return the index of the square
 
 //newGameSuccess meansresetting the text in the baord to initial board logic
 //const addPlayerSuccess = function (data) {

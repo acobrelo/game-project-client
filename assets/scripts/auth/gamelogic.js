@@ -11,12 +11,57 @@ let recentIndex = null;
 
 const player = ['x','o','x','o','x','o','x','o','x'];
 let currentMove = null;
+let rowWin;
+let colWin;
+let diaWin;
+
+const isWinner = function () {
+  if ((rowWin === true || colWin === true || diaWin === true) && (turn === 9)) {
+    console.log("game is won");
+  } else {
+    console.log("keep going");
+  }
+  return isWinner;
+};
+
+const winRow = function () {
+  for (let i = 0; i < 9; i+=3) {
+    if (boardArray[i] === boardArray[i + 1] === boardArray[i + 2]) {
+      rowWin = true;
+    } else {
+      rowWin = false;
+    }
+  }
+    return rowWin;
+};
+
+const winCol = function () {
+  for (let i = 0; i < 3; i+=1) {
+    if (boardArray[i] === boardArray[i + 3] === boardArray[i + 3]) {
+      colWin = true;
+    } else {
+      colWin = false;
+    }
+  }
+  return colWin;
+};
 
 
-//figure out if turn is "x" or "o"
-//if the value of turn is even, it is x. bold Player 1
-//turn%2=0 when even, so player o turn%2 not 0 means odd so player x.
-//this works
+//for win col, i needs to be less than 3
+
+const winDia = function () {
+  if ((boardArray[0] === boardArray[4] === boardArray[8]) || (boardArray[2] === boardArray[4] === boardArray[6])) {
+    diaWin = true;
+  } else {
+    diaWin = false;
+    }
+  return diaWin;
+};
+
+
+
+//next, what I want to do is display win condition. update the board array to reflect the
+//current state, then set win conditions.
 
 
 
@@ -28,4 +73,11 @@ module.exports = {
   recentIndex,
   player,
   currentMove,
+  winDia,
+  winRow,
+  winCol,
+  diaWin,
+  colWin,
+  rowWin,
+  isWinner,
 };

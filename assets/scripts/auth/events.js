@@ -50,7 +50,7 @@ const onCreateGame = function (event) {
   .fail(ui.failure);
 };
 
-const onSetValues = function (event) {
+const onUpdateBoard = function (event) {
   event.preventDefault();
   let cellID = $(this).attr('id');
   let index = gameLogic.arrayKey.indexOf(cellID);
@@ -62,19 +62,16 @@ const onSetValues = function (event) {
   $('#' + cellID).html(gameLogic.currentMove);
   gameLogic.turn = (gameLogic.turn + 1);
   $('#toUpdate').find('.move').val(currentMove);
-  console.log(currentMove);
-};
-
-//we know the recent index updates, we know the turn updates.
-//the value of index is set on the html
-//
-const update = function (event) {
-  event.preventDefault();
+  gameLogic.boardArray[index] = currentMove;
   api.updateGame()
   .done(ui.displayGame)
   .fail(ui.failure);
 };
-
+//Notes: this will take the square clicked, find the index of the ID in the gameLogic board
+//simulation, make the form for API communication index is set,
+//then increase the turn counter, use that to determine which player is going,
+//then update the current move in the html that communicates with the API
+//and update it all.
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
@@ -82,8 +79,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('#show-game').on('click', onShowGame);
   $('#create-game').on('click', onCreateGame);
-  $('.board').on('click', onSetValues);
-  $('#toUpdate').on('click', update);
+  $('.board').on('click', onUpdateBoard);
 };
 
 module.exports = {
