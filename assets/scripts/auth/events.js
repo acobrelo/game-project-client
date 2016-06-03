@@ -58,9 +58,11 @@ const onSetValues = function (event) {
   $('#toUpdate').find('.index').val(index);
   let whoseMove = gameLogic.turn;
   gameLogic.currentMove = gameLogic.player[whoseMove];
+  let currentMove = gameLogic.currentMove;
   $('#' + cellID).html(gameLogic.currentMove);
   gameLogic.turn = (gameLogic.turn + 1);
-  console.log(whoseMove);
+  $('#toUpdate').find('.move').val(currentMove);
+  console.log(currentMove);
 };
 
 //we know the recent index updates, we know the turn updates.

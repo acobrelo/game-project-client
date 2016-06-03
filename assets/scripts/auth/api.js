@@ -76,7 +76,7 @@ const createGame = function (data) {
 
 const updateGame = function () {
   let index = gameLogic.recentIndex;
-  let move = gameLogic.move;
+  let move = gameLogic.currentMove;
   return $.ajax ({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
