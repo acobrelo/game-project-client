@@ -2,6 +2,7 @@
 
 const app = require('../app.js');
 const gameLogic = require('./gamelogic');
+const events = require('./events.js');
 
 const success = (data) => {
   console.log(data);
@@ -31,14 +32,13 @@ const displayGame = function (data) {
 
 const newGameSuccess = function (data) {
   app.game = data.game;
-  gameLogic.boardArray = gameLogic.initialBoard;
+  gameLogic.boardArray = ['', '', '', '', '', '','', '', ''];
+  gameLogic.turn = 0;
+  events.isWon = 'unknown';
   $('#update-game').children().children('.board').text("");
   console.log(app);
 };
 
-//const isWinner = function (){
-//  if gameLogic.
-//}
 
 
 //newGameSuccess meansresetting the text in the baord to initial board logic
@@ -53,7 +53,6 @@ const uiMethods = {
   signOutSuccess,
   displayGame,
   newGameSuccess,
-  //whichSquare,
 };
 
 module.exports = uiMethods;

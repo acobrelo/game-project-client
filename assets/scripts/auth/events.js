@@ -50,6 +50,16 @@ const onCreateGame = function (event) {
   .fail(ui.failure);
 };
 
+let isRowWon = 'unknown';
+let winRow = function () {
+    for (let i = 0; i < 9; i += 3) {
+      if ((gameLogic.boardArray[i] === gameLogic.boardArray[i + 1]) && (gameLogic.boardArray[i] === gameLogic.boardArray[i + 2]) && (gameLogic.boardArray[i] !== '')) {
+        isRowWon = 'yes';
+        console.log(isRowWon);
+    }
+  }
+};
+
 const onUpdateBoard = function (event) {
   event.preventDefault();
   let cellID = $(this).attr('id');
@@ -63,15 +73,14 @@ const onUpdateBoard = function (event) {
   gameLogic.turn = (gameLogic.turn + 1);
   $('#toUpdate').find('.move').val(currentMove);
   gameLogic.boardArray[index] = currentMove;
-  gameLogic.winRow.checkIt();
-  //gameLogic.winCol.checkIt();
-  //gameLogic.winDia.checkIt();
-//  gameLogic.isWinner();
+  //gameLogic.isWinner();
+  winRow();
   api.updateGame();
   //.done(ui.displayGame)
   //.fail(ui.failure);
-  console.log(gameLogic.winRow.isWon);
+  console.log(isRowWon);
 };
+
 //Notes: this will take the square clicked, find the index of the ID in the gameLogic board
 //simulation, make the form for API communication index is set,
 //then increase the turn counter, use that to determine which player is going,
