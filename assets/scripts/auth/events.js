@@ -56,7 +56,7 @@ let winRow = function () {
   }
 };
 
-let isColWon = ui.def;
+let isColWon = 'unknown';
 let winCol = function () {
   for (let i = 0; i < 3; i++) {
     if ((gameLogic.boardArray[i] === gameLogic.boardArray[i + 3]) && (gameLogic.boardArray[i] === gameLogic.boardArray[i + 6]) && (gameLogic.boardArray[i] !== '')) {
@@ -80,6 +80,19 @@ let winDia = function () {
 }
 };
 
+let won = 'nah';
+const isWinner = function () {
+  winRow();
+  winCol();
+  winDia();
+  if ((isRowWon !== isColWon) || (isRowWon !== isDiaWon)) {
+    won = 'YUSSS';
+  } else {
+    won = 'nah';
+  }
+  console.log(isRowWon + " " + isColWon + " " + isDiaWon + " " + won);
+};
+
 const onUpdateBoard = function (event) {
   event.preventDefault();
   let cellID = $(this).attr('id');
@@ -93,14 +106,11 @@ const onUpdateBoard = function (event) {
   gameLogic.turn = (gameLogic.turn + 1);
   $('#toUpdate').find('.move').val(currentMove);
   gameLogic.boardArray[index] = currentMove;
-  winRow();
-  winCol();
-  winDia();
-  gameLogic.isWinner();
+  isWinner();
   api.updateGame()
   .done(ui.displayGame)
   .fail(ui.failure);
-  console.log(isRowWon + " " + isColWon + " " + isDiaWon + gameLogic.boardArray);
+  console.log("whatever " + isRowWon + " " + isColWon + " " + isDiaWon );
 };
 
 const onCreateGame = function (event) {
