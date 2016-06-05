@@ -43,6 +43,26 @@ const onShowGame = function (event) {
   .fail(ui.failure);
 };
 
+//let currentHouse = 'ok';
+//let xHouse = 'ok';
+//let oHouse = 'ok';
+
+//const houseSet = function (event) {
+//  event.preventDefault();
+//  currentHouse = $(this).attr('id');
+//  if (xHouse === 'ok') {
+//    xHouse = currentHouse;
+//    currentHouse = 'new';
+//    } else {
+//      oHouse = currentHouse;
+//  }
+//  console.log(xHouse);
+//};
+
+// const onSelectHouse = function (event) {
+//  event.preventDefault();
+//  $('.house').on('click', houseSet);
+//};
 
 let isRowWon = 'unknown';
 let winRow = function () {
@@ -137,7 +157,6 @@ const onUpdateBoard = function () {
 const checkValid = function (event) {
   event.preventDefault();
   cell = $(this).attr('id');
-  console.log(cell);
   let hi = $('#' + cell).html();
   if (hi === "") {
     $('.warn').hide();
@@ -167,6 +186,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('#show-game').on('click', onShowGame);
   $('#create-game').on('click', onCreateGame);
+//  $('#house-choice').on('click', onSelectHouse);
 };
 
 module.exports = {

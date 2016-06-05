@@ -71,8 +71,8 @@
               <div class="modal-body">
                 <form action="#" id="house-choice">
                   <fieldset>
-                    <input type="button" value="House Stark">
-                    <input type="button" value="Lannister">
+                    <input type="button" class="house" id="stark" value="House Stark">
+                    <input type="button" class="house" id="lannister" value="Lannister">
                   </fieldset>
                 </form>
               </div>
@@ -80,8 +80,8 @@
           </div>
         </div>
 
-      <div class="x-Wins">Player 1 Score: </div>
-      <div class="o-Wins">Player 2 Score: </div>
+      <div class="x-Wins">Player X Score: </div>
+      <div class="o-Wins">Player Y Score: </div>
       <div class="warn" style="display: none">Click an empty square to continue</div>
       <div class="whoWon"></div>
 
@@ -99,9 +99,9 @@
           <div class="board" id="c2"></div>
           <div class="board" id="c3"></div>
           <form id="toUpdate">
-            <input name="game[cell][index]" class="index" type="text">
-            <input name="game[cell][value]" class="move" type="text">
-            <input name="game[over]" class="over" type="text">
+            <input name="game[cell][index]" class="index" type="text" style="display: none">
+            <input name="game[cell][value]" class="move" type="text" style="display: none">
+            <input name="game[over]" class="over" type="text" style="display: none">
           </form>
         </section>
       </div>
