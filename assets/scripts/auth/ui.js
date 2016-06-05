@@ -34,9 +34,10 @@ const newGameSuccess = function (data) {
   app.game = data.game;
   gameLogic.boardArray = ['', '', '', '', '', '','', '', ''];
   gameLogic.turn = 0;
-  events.isWon = 'unknown';
   $('#update-game').children().children('.board').text("");
-  console.log(app);
+  $('#toUpdate').find('.index').val("");
+  $('#toUpdate').find('.move').val("");
+  console.log(app + gameLogic.boardArray + gameLogic.turn + events.isRowWon);
 };
 
 
