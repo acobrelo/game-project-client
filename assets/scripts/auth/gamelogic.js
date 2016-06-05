@@ -1,5 +1,5 @@
 'use strict';
-const events = require('./events.js');
+//const events = require('./events.js');
 
 let turn = 0;
 //initial board as a constant allows for the board to be reset as such each time a new game is started
@@ -12,12 +12,6 @@ let recentIndex = null;
 const player = ['x','o','x','o','x','o','x','o','x'];
 let currentMove = null;
 
-
-const isWinner = function () {
-  if (events.isWinDia === 'yes' || events.isWinRow === 'yes') {
-   console.log('winner');
- }
- };
  //next, what I want to do is display win condition. update the board array to reflect the
 //current state, then set win conditions.
 
@@ -31,5 +25,4 @@ module.exports = {
   recentIndex,
   player,
   currentMove,
-  isWinner,
 };

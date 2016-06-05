@@ -80,37 +80,52 @@ let winDia = function () {
 }
 };
 
-let won = 'nah';
+let won = 'false';
+let bindToggle = $('.board').on('click');
 const isWinner = function () {
   winRow();
   winCol();
   winDia();
   if ((isRowWon !== isColWon) || (isRowWon !== isDiaWon)) {
-    won = 'YUSSS';
+    won = 'true';
+    $('.whoWon').html("Player " + gameLogic.currentMove + " wins!");
+    bindToggle = $('.board').off('click');
   } else {
-    won = 'nah';
+    won = 'false';
   }
-  console.log(isRowWon + " " + isColWon + " " + isDiaWon + " " + won);
+  return;
 };
 
-const onUpdateBoard = function (event) {
-  event.preventDefault();
-  let cellID = $(this).attr('id');
-  let index = gameLogic.arrayKey.indexOf(cellID);
+let cell = 'unknown';
+const onUpdateBoard = function () {
+  let index = gameLogic.arrayKey.indexOf(cell);
   gameLogic.recentIndex = index;
   $('#toUpdate').find('.index').val(index);
   let whoseMove = gameLogic.turn;
   gameLogic.currentMove = gameLogic.player[whoseMove];
   let currentMove = gameLogic.currentMove;
-  $('#' + cellID).html(gameLogic.currentMove);
+  $('#' + cell).html(gameLogic.currentMove);
   gameLogic.turn = (gameLogic.turn + 1);
   $('#toUpdate').find('.move').val(currentMove);
   gameLogic.boardArray[index] = currentMove;
   isWinner();
+  $('#toUpdate').find('.over').val(won);
   api.updateGame()
   .done(ui.displayGame)
   .fail(ui.failure);
-  console.log("whatever " + isRowWon + " " + isColWon + " " + isDiaWon );
+};
+
+const checkValid = function (event) {
+  event.preventDefault();
+  cell = $(this).attr('id');
+  console.log(cell);
+  let hi = $('#' + cell).html();
+  if (hi === "") {
+    $('.warn').hide();
+   onUpdateBoard();
+  } else {
+    $('.warn').show();
+  }
 };
 
 const onCreateGame = function (event) {
@@ -132,7 +147,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('#show-game').on('click', onShowGame);
   $('#create-game').on('click', onCreateGame);
-  $('.board').on('click', onUpdateBoard);
+  $('.board').on('click', checkValid);
 };
 
 module.exports = {

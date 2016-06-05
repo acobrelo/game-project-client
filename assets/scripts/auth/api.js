@@ -1,6 +1,7 @@
 'use strict';
 const app = require('../app.js');
 const gameLogic = require('./gamelogic');
+const events = require('./events.js');
 
 const signUp = (data) => {
   return $.ajax ({
@@ -77,6 +78,7 @@ const createGame = function (data) {
 const updateGame = function () {
   let index = gameLogic.recentIndex;
   let move = gameLogic.currentMove;
+  let won = events.won;
   return $.ajax ({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
@@ -89,7 +91,7 @@ const updateGame = function () {
 	          "index": index,
 	          "value": move,
 	        },
-	        "over": "false"
+	        "over": won,
 	      }
 	    },
   });
