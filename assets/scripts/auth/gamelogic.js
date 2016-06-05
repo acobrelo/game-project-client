@@ -12,6 +12,8 @@ let recentIndex = null;
 const player = ['x','o','x','o','x','o','x','o','x'];
 let currentMove = null;
 
+let xWins = 0;
+let oWins = 0;
  //next, what I want to do is display win condition. update the board array to reflect the
 //current state, then set win conditions.
 
@@ -25,4 +27,6 @@ module.exports = {
   recentIndex,
   player,
   currentMove,
+  xWins,
+  oWins,
 };

@@ -39,7 +39,7 @@ const newGameSuccess = function (data) {
   $('#toUpdate').find('.index').val("");
   $('#toUpdate').find('.move').val("");
   $('#toUpdate').find('.over').val("");
-  $('.board').bind('click');
+  $('.whoWon').html("");
   console.log(app);
 };
 
