@@ -9,16 +9,14 @@ const onSignUp = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.signUp(data)
-  .done(ui.success)
-  .fail(ui.failure);
+  .done(ui.success);
 };
 
 const onSignIn = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.signIn(data)
-  .done(ui.signInSuccess)
-  .fail(ui.failure);
+  .done(ui.signInSuccess);
 };
 
 const onSignOut= function (event) {
@@ -40,23 +38,20 @@ const onSignOut= function (event) {
   $('.scoreboard').hide();
   $('#welcome').html("Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.");
   api.signOut()
-  .done(ui.success)
-  .fail(ui.failure);
+  .done(ui.success);
 };
 
 const onChangePassword =  function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.changePassword(data)
-  .done(ui.success)
-  .fail(ui.failure);
+  .done(ui.success);
 };
 
 const onIndex = function (event) {
   event.preventDefault();
   api.indexOfGames()
-  .done(ui.indexGames)
-  .fail(ui.failure);
+  .done(ui.indexGames);
 };
 
 let currentHouse = 'none';
@@ -199,8 +194,7 @@ const onUpdateBoard = function () {
   $('#toUpdate').find('.over').val(gameLogic.won);
   winCounter();
   api.updateGame()
-  .done(ui.success)
-  .fail(ui.failure);
+  .done(ui.success);
 };
 
 const checkValid = function (event) {
@@ -222,8 +216,7 @@ const onCreateGame = function (event) {
   $('.scoreboard').show();
   $('.board').on('click', checkValid);
   api.createGame()
-  .done(ui.newGameSuccess)
-  .fail(ui.failure);
+  .done(ui.newGameSuccess);
 };
 
 //Notes: this will take the square clicked, find the index of the ID in the gameLogic board

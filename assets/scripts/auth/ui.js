@@ -8,10 +8,6 @@ const success = (data) => {
   return data;
 };
 
-const failure = (error) => {
-  console.log(error);
-};
-
 const signInSuccess = function (data) {
   app.user = data.user;
   let email = data.user.email;
@@ -78,7 +74,6 @@ const newGameSuccess = function (data) {
 };
 
 const uiMethods = {
-  failure,
   success,
   signInSuccess,
   signOutSuccess,
