@@ -23,6 +23,7 @@ const signInSuccess = function (data) {
   $('#sign-in').hide();
   $('#heading').show();
   $('#index').show();
+  $('#scoreboard').show();
   $('#welcome').html("Welcome, " + email);
   return app;
 };
@@ -61,7 +62,7 @@ const indexGames = function (data) {
   toUse = data.games;
   finishedArray();
   countTrue();
-  $('#displayGameData').html('You have started ' + finished.length + ' games and completed ' + wonGames.length);
+  $('#displayGameData').html('Started: ' + finished.length + ' Completed: ' + wonGames.length);
 };
 
 const newGameSuccess = function (data) {

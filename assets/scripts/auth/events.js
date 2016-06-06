@@ -37,6 +37,7 @@ const onSignOut= function (event) {
   $('#displayGameData').hide();
   $('.whoWon').hide();
   $('#switch-house').hide();
+  $('.scoreboard').hide();
   $('#welcome').html("Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.");
   api.signOut()
   .done(ui.success)
@@ -61,7 +62,6 @@ const onIndex = function (event) {
 let currentHouse = 'none';
 let xHouse = 'none';
 let oHouse = 'none';
-let ready = 'no';
 
 const houseSet = function () {
   if (xHouse === 'none') {
@@ -76,7 +76,6 @@ const houseSet = function () {
     $('#house-set-b').html("Player 2 is " + oHouse);
     $('#house-set-b').show();
     $('.house').hide();
-    ready = 'yes';
     $('#update-game').show();
     $('#create-game').show();
     $('#choose-house').hide();
@@ -97,7 +96,6 @@ const resetHouses = function (event) {
   $('.house').show();
   xHouse = 'none';
   oHouse = 'none';
-  ready = 'no';
   $('#house-set-a').hide();
   $('#house-set-b').hide();
 };
@@ -182,6 +180,7 @@ const winCounter = function () {
     oInc = 1 + gameLogic.oWins++;
     $('.o-Wins').html("Player O Score: " + oInc);
   }
+  return;
 };
 
 let cell = 'unknown';
@@ -220,6 +219,7 @@ const onCreateGame = function (event) {
   event.preventDefault();
   $('#update-game').show();
   $('#switch-house').hide();
+  $('.scoreboard').show();
   $('.board').on('click', checkValid);
   api.createGame()
   .done(ui.newGameSuccess)
