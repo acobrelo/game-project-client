@@ -87,7 +87,6 @@ const houseSet = function () {
 const onSelectHouse = function (event) {
   event.preventDefault();
   currentHouse = $(this).attr('id');
-  console.log(currentHouse);
   houseSet();
 };
 
