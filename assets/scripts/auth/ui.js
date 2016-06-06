@@ -2,7 +2,6 @@
 
 const app = require('../app.js');
 const gameLogic = require('./gamelogic');
-const events = require('./events.js');
 
 const success = (data) => {
   console.log(data);
@@ -10,7 +9,7 @@ const success = (data) => {
 };
 
 const failure = (error) => {
-  console.error(error);
+  console.log(error);
 };
 
 const signInSuccess = function (data) {
@@ -27,7 +26,42 @@ const signOutSuccess = function () {
 };
 
 const displayGame = function (data) {
-  console.log(data);
+  let see = data.game.id;
+  $('#displayGameData').text(see);
+  console.log(see);
+};
+
+let count = 0;
+let toUse = 'blank';
+let finished = [];
+let wonGames = [];
+
+const finishedArray = function () {
+  for (let i = 0; i < count; i++) {
+    if (toUse[i].over !== 'blank') {
+      finished.push(toUse[i].over + 'a');
+    }
+  }
+};
+
+const countTrue = function () {
+  for (let i = 0; i < count; i++) {
+    if (finished[i] === 'truea') {
+      wonGames.push('x');
+    }
+  }
+  console.log(wonGames);
+};
+
+const indexGames = function (data) {
+  finished = [];
+  wonGames = [];
+  count = data.games.length;
+  toUse = data.games;
+  finishedArray();
+  countTrue();
+  $('#displayGameData').html('You have started ' + finished.length + ' games and completed ' + wonGames.length);
+  console.log(finished.length);
 };
 
 const newGameSuccess = function (data) {
@@ -43,13 +77,6 @@ const newGameSuccess = function (data) {
   console.log(app);
 };
 
-
-
-//newGameSuccess meansresetting the text in the baord to initial board logic
-//const addPlayerSuccess = function (data) {
-  //console.log("hi" + data);
-//};
-
 const uiMethods = {
   failure,
   success,
@@ -57,6 +84,7 @@ const uiMethods = {
   signOutSuccess,
   displayGame,
   newGameSuccess,
+  indexGames,
 };
 
 module.exports = uiMethods;

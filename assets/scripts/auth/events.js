@@ -43,6 +43,12 @@ const onShowGame = function (event) {
   .fail(ui.failure);
 };
 
+const onIndex = function (event) {
+  event.preventDefault();
+  api.indexOfGames()
+  .done(ui.indexGames)
+  .fail(ui.failure);
+};
 //let currentHouse = 'ok';
 //let xHouse = 'ok';
 //let oHouse = 'ok';
@@ -101,22 +107,21 @@ let winDia = function () {
 };
 
 let tie = 'false';
-let won = 'false';
 const isWinner = function () {
   winRow();
   winCol();
   winDia();
   if ((isRowWon !== isColWon) || (isRowWon !== isDiaWon)) {
-    won = 'true';
+    gameLogic.won = 'true';
     $('.whoWon').html("Player " + gameLogic.currentMove + " wins!");
     $('.board').off('click');
   } else if ((isRowWon === isColWon) && (isRowWon === isDiaWon) && (gameLogic.turn > 8)) {
-    won = 'true';
+    gameLogic.won = 'true';
     tie = 'true';
     $('.whoWon').html("Tie game!");
     $('.board').off('click');
   } else {
-    won = 'false';
+    gameLogic.won = 'false';
     tie = 'false';
   }
   return;
@@ -147,11 +152,12 @@ const onUpdateBoard = function () {
   $('#toUpdate').find('.move').val(currentMove);
   gameLogic.boardArray[index] = currentMove;
   isWinner();
-  $('#toUpdate').find('.over').val(won);
+  $('#toUpdate').find('.over').val(gameLogic.won);
   winCounter();
   api.updateGame()
-  .done(ui.displayGame)
+  .done(ui.success)
   .fail(ui.failure);
+  console.log(gameLogic.won);
 };
 
 const checkValid = function (event) {
@@ -185,6 +191,7 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
   $('#show-game').on('click', onShowGame);
+  $('#index').on('click', onIndex);
   $('#create-game').on('click', onCreateGame);
 //  $('#house-choice').on('click', onSelectHouse);
 };

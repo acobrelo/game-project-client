@@ -1,7 +1,8 @@
 'use strict';
 const app = require('../app.js');
 const gameLogic = require('./gamelogic');
-const events = require('./events.js');
+//const events = require('./events.js');
+//const ui = require('./ui.js')
 
 const signUp = (data) => {
   return $.ajax ({
@@ -42,7 +43,7 @@ const changePassword = function (data) {
 
 const indexOfGames = function () {
   return $.ajax({
-    url: app.host + '/games[?over=]/',
+    url: app.host + '/games/',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token,
@@ -59,6 +60,7 @@ const showGame = function () {
     },
   });
 };
+
 
 const createGame = function (data) {
   return $.ajax ({
@@ -78,7 +80,7 @@ const createGame = function (data) {
 const updateGame = function () {
   let index = gameLogic.recentIndex;
   let move = gameLogic.currentMove;
-  let won = events.won;
+  let won = gameLogic.won;
   return $.ajax ({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',

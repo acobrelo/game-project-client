@@ -14,6 +14,8 @@ let currentMove = null;
 
 let xWins = 0;
 let oWins = 0;
+
+let won = 'unknown';
  //next, what I want to do is display win condition. update the board array to reflect the
 //current state, then set win conditions.
 
@@ -29,4 +31,5 @@ module.exports = {
   currentMove,
   xWins,
   oWins,
+  won,
 };
