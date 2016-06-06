@@ -1,4 +1,4 @@
-Link to hosted game:
+Link to hosted game: http://acobrelo.github.io/game-project-client/ 
 
 Technologies used: HTML, CSS, JavaScript, provided back-end API through Ruby
 
