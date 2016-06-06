@@ -23,8 +23,23 @@ const onSignIn = function (event) {
 
 const onSignOut= function (event) {
   event.preventDefault();
+  $('#house-selecta').hide();
+  $('#change-password').hide();
+  $('#sign-out').hide();
+  $('#sign-up').show();
+  $('#sign-in').show();
+  $('#heading').hide();
+  $('#index').hide();
+  $('#house-set-a').hide();
+  $('#house-set-b').hide();
+  $('#update-game').hide();
+  $('#create-game').hide();
+  $('#displayGameData').hide();
+  $('.whoWon').hide();
+  $('#switch-house').hide();
+  $('#welcome').html("Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.");
   api.signOut()
-  .done(ui.signOutSuccess)
+  .done(ui.success)
   .fail(ui.failure);
 };
 
@@ -36,39 +51,57 @@ const onChangePassword =  function (event) {
   .fail(ui.failure);
 };
 
-const onShowGame = function (event) {
-  event.preventDefault();
-  api.showGame()
-  .done(ui.displayGame)
-  .fail(ui.failure);
-};
-
 const onIndex = function (event) {
   event.preventDefault();
   api.indexOfGames()
   .done(ui.indexGames)
   .fail(ui.failure);
 };
-//let currentHouse = 'ok';
-//let xHouse = 'ok';
-//let oHouse = 'ok';
 
-//const houseSet = function (event) {
-//  event.preventDefault();
-//  currentHouse = $(this).attr('id');
-//  if (xHouse === 'ok') {
-//    xHouse = currentHouse;
-//    currentHouse = 'new';
-//    } else {
-//      oHouse = currentHouse;
-//  }
-//  console.log(xHouse);
-//};
+let currentHouse = 'none';
+let xHouse = 'none';
+let oHouse = 'none';
+let ready = 'no';
 
-// const onSelectHouse = function (event) {
-//  event.preventDefault();
-//  $('.house').on('click', houseSet);
-//};
+const houseSet = function () {
+  if (xHouse === 'none') {
+    xHouse = currentHouse;
+    currentHouse = 'none';
+    $('#house-set-a').html("Player 1 is " + xHouse);
+    $('#house-set-a').show();
+    $('#choose-house').html("Player 2, select your house");
+    $('#' + xHouse).hide();
+  } else {
+    oHouse = currentHouse;
+    $('#house-set-b').html("Player 2 is " + oHouse);
+    $('#house-set-b').show();
+    $('.house').hide();
+    ready = 'yes';
+    $('#update-game').show();
+    $('#create-game').show();
+    $('#choose-house').hide();
+    $('#choose-house').html("Player 1, select your house");
+  }
+};
+
+const onSelectHouse = function (event) {
+  event.preventDefault();
+  currentHouse = $(this).attr('id');
+  console.log(currentHouse);
+  houseSet();
+};
+
+const resetHouses = function (event) {
+  event.preventDefault();
+  currentHouse = 'none';
+  $('#choose-house').show();
+  $('.house').show();
+  xHouse = 'none';
+  oHouse = 'none';
+  ready = 'no';
+  $('#house-set-a').hide();
+  $('#house-set-b').hide();
+};
 
 let isRowWon = 'unknown';
 let winRow = function () {
@@ -107,13 +140,26 @@ let winDia = function () {
 };
 
 let tie = 'false';
+
+let house = 'unknown';
+
+const houseWinner = function () {
+  if (gameLogic.currentMove === 'x') {
+    house = xHouse;
+  } else {
+    house = oHouse;
+  }
+};
+
 const isWinner = function () {
   winRow();
   winCol();
   winDia();
   if ((isRowWon !== isColWon) || (isRowWon !== isDiaWon)) {
     gameLogic.won = 'true';
-    $('.whoWon').html("Player " + gameLogic.currentMove + " wins!");
+    houseWinner();
+    $('.whoWon').html(house + " wins!");
+    $('#switch-house').show();
     $('.board').off('click');
   } else if ((isRowWon === isColWon) && (isRowWon === isDiaWon) && (gameLogic.turn > 8)) {
     gameLogic.won = 'true';
@@ -157,7 +203,6 @@ const onUpdateBoard = function () {
   api.updateGame()
   .done(ui.success)
   .fail(ui.failure);
-  console.log(gameLogic.won);
 };
 
 const checkValid = function (event) {
@@ -174,6 +219,8 @@ const checkValid = function (event) {
 
 const onCreateGame = function (event) {
   event.preventDefault();
+  $('#update-game').show();
+  $('#switch-house').hide();
   $('.board').on('click', checkValid);
   api.createGame()
   .done(ui.newGameSuccess)
@@ -190,10 +237,10 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn);
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
-  $('#show-game').on('click', onShowGame);
   $('#index').on('click', onIndex);
   $('#create-game').on('click', onCreateGame);
-//  $('#house-choice').on('click', onSelectHouse);
+  $('.house').on('click', onSelectHouse);
+  $('#switch-house').on('click', resetHouses);
 };
 
 module.exports = {

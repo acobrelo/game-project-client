@@ -37,13 +37,13 @@
               <input type="submit" name="submit" value="Sign in!">
             </fieldset>
           </form>
-          <form id="sign-out">
+          <form id="sign-out" style="display: none">
             <fieldset>
               <p>Sign Out</p>
               <input type="submit" name="submit" value="Sign out!">
             </fieldset>
           </form>
-          <form id="change-password">
+          <form id="change-password" style="display: none">
             <fieldset>
               <p>Change Password</p>
               <input type="password" class="bye" name="passwords[old]" placeholder="Old Password">
@@ -56,38 +56,29 @@
   </div>
 </div>
 
-<!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#character-select">
-      Select House
-    </button>
-<!-- Modal -->
-      <div class="modal fade" id="character-select" tabindex="-1" role="dialog" aria-labelledby="characterSelectLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="characterSelectLabel">Choose Your House</h4>
-              </div>
-              <div class="modal-body">
-                <form action="#" id="house-choice">
-                  <fieldset>
-                    <input type="button" class="house" id="stark" value="House Stark">
-                    <input type="button" class="house" id="lannister" value="Lannister">
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div style="display: none" class="scoreboard">
+  <div class="x-Wins">Player X Score: </div>
+  <div class="o-Wins">Player Y Score: </div>
+  </div>
+  <div class="warn" style="display: none">Click an empty square to continue</div>
+  <div class="whoWon"></div>
 
-      <div class="x-Wins">Player X Score: </div>
-      <div class="o-Wins">Player Y Score: </div>
-      <div class="warn" style="display: none">Click an empty square to continue</div>
-      <div class="whoWon"></div>
+  <h2 id="welcome">Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.</h2>
+  <h1 id="heading" style="display: none">Hogwarts Tic Tac Toe</h1>
+    <div id="house-selecta" style="display: none">
+      <h3 id="choose-house">Player 1, select your house</h3>
+      <button type="button" class="house" id="Gryffindor">Gryffindor</button>
+      <button type="button" class="house" id="Ravenclaw">Ravenclaw</button>
+      <button type="button" class="house" id="Slytherin">Slytherin</button>
+      <button type="button" class="house" id="Hufflepuff">Hufflepuff</button>
+    </div>
+    <div id="house-set-a" style="display: none"></div>
+    <div id="house-set-b" style="display: none"></div>
 
-      <h1>Tic Tac Thrones</h1>
+<button type="button" id="switch-house" style="display: none">Switch Houses?</button>
+<button type="button" id="create-game" style="display: none">Start Game!</button>
 
-      <div class="container" id="update-game">
+      <div style="display: none" class="container" id="update-game">
         <section>
           <div class="board" id="a1"></div>
           <div class="board" id="a2"></div>
@@ -106,10 +97,8 @@
         </section>
       </div>
 
-      <button type="button" id="create-game">New Game?</button>
-      <button type="button" id="show-game">Show Game</button>
+      <button type="button" id="index" style="display: none">How many games have I played?</button>
       <div id="displayGameData"></div>
-      <button type="button" id="index">How many games have I played?</button>
 
     </body>
 </html>

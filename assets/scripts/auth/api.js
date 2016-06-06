@@ -51,17 +51,6 @@ const indexOfGames = function () {
   });
 };
 
-const showGame = function () {
-  return $.ajax({
-    url: app.host + '/games/' + app.game.id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + app.user.token,
-    },
-  });
-};
-
-
 const createGame = function (data) {
   return $.ajax ({
     url: app.host + '/games/',
@@ -109,7 +98,6 @@ module.exports = {
   signOut,
   changePassword,
   indexOfGames,
-  showGame,
   createGame,
   updateGame,
 };

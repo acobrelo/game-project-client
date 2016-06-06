@@ -4,8 +4,8 @@ const app = require('../app.js');
 const gameLogic = require('./gamelogic');
 
 const success = (data) => {
-  console.log(data);
   $('#account-options').find('.bye').val("");
+  return data;
 };
 
 const failure = (error) => {
@@ -14,21 +14,23 @@ const failure = (error) => {
 
 const signInSuccess = function (data) {
   app.user = data.user;
-  console.log(app);
+  let email = data.user.email;
   $('#account-options').find('.bye').val("");
+  $('#house-selecta').show();
+  $('#change-password').show();
+  $('#sign-out').show();
+  $('#sign-up').hide();
+  $('#sign-in').hide();
+  $('#heading').show();
+  $('#index').show();
+  $('#welcome').html("Welcome, " + email);
+  return app;
 };
 //here, we're basically saying we're calling our data app from now on to
 //call things later, such as in sign out process
 
 const signOutSuccess = function () {
   app.user = null;
-  console.log(app);
-};
-
-const displayGame = function (data) {
-  let see = data.game.id;
-  $('#displayGameData').text(see);
-  console.log(see);
 };
 
 let count = 0;
@@ -50,7 +52,6 @@ const countTrue = function () {
       wonGames.push('x');
     }
   }
-  console.log(wonGames);
 };
 
 const indexGames = function (data) {
@@ -61,7 +62,6 @@ const indexGames = function (data) {
   finishedArray();
   countTrue();
   $('#displayGameData').html('You have started ' + finished.length + ' games and completed ' + wonGames.length);
-  console.log(finished.length);
 };
 
 const newGameSuccess = function (data) {
@@ -74,7 +74,6 @@ const newGameSuccess = function (data) {
   $('#toUpdate').find('.move').val("");
   $('#toUpdate').find('.over').val("");
   $('.whoWon').html("");
-  console.log(app);
 };
 
 const uiMethods = {
@@ -82,7 +81,6 @@ const uiMethods = {
   success,
   signInSuccess,
   signOutSuccess,
-  displayGame,
   newGameSuccess,
   indexGames,
 };
