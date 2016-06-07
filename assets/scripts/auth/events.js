@@ -21,24 +21,8 @@ const onSignIn = function (event) {
 
 const onSignOut= function (event) {
   event.preventDefault();
-  $('#house-selecta').hide();
-  $('#change-password').hide();
-  $('#sign-out').hide();
-  $('#sign-up').show();
-  $('#sign-in').show();
-  $('#heading').hide();
-  $('#index').hide();
-  $('#house-set-a').hide();
-  $('#house-set-b').hide();
-  $('#update-game').hide();
-  $('#create-game').hide();
-  $('#displayGameData').hide();
-  $('.whoWon').hide();
-  $('#switch-house').hide();
-  $('.scoreboard').hide();
-  $('#welcome').html("Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.");
   api.signOut()
-  .done(ui.success);
+  .done(ui.signOutSuccess);
 };
 
 const onChangePassword =  function (event) {
