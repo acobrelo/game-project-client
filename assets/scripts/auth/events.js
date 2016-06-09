@@ -41,6 +41,36 @@ const onIndex = function (event) {
 let currentHouse = 'none';
 let xHouse = 'none';
 let oHouse = 'none';
+let xImg = 'none';
+let oImg = 'none';
+let ravImg = '<img src="assets/images/ravicon.png"/>';
+let gryfImg = '<img src="assets/images/gryficon.png"/>';
+let slythImg = '<img src="assets/images/slythicon.png"/>';
+let huffImg = '<img src="assets/images/hufficon.png"/>';
+
+const setxHouseImg = function () {
+  if (xHouse === 'Gryffindor') {
+    xImg = gryfImg;
+  } else if (xHouse === 'Ravenclaw') {
+    xImg = ravImg;
+  } else if (xHouse === 'Slytherin') {
+    xImg = slythImg;
+  } else {
+    xImg = huffImg;
+  }
+};
+
+const setoHouseImg = function () {
+  if (oHouse === 'Gryffindor') {
+    oImg = gryfImg;
+  } else if (oHouse === 'Ravenclaw') {
+    oImg = ravImg;
+  } else if (oHouse === 'Slytherin') {
+    oImg = slythImg;
+  } else {
+    oImg = huffImg;
+  }
+};
 
 const houseSet = function () {
   if (xHouse === 'none') {
@@ -66,6 +96,8 @@ const onSelectHouse = function (event) {
   event.preventDefault();
   currentHouse = $(this).attr('id');
   houseSet();
+  setxHouseImg();
+  setoHouseImg();
 };
 
 const resetHouses = function (event) {
@@ -163,6 +195,15 @@ const winCounter = function () {
 };
 
 let cell = 'unknown';
+
+const playerImg = function () {
+  if (gameLogic.currentMove === 'x') {
+    $('#' + cell).html(xImg);
+  } else {
+    $('#' + cell).html(oImg);
+  }
+};
+
 const onUpdateBoard = function () {
   let index = gameLogic.arrayKey.indexOf(cell);
   gameLogic.recentIndex = index;
@@ -170,7 +211,7 @@ const onUpdateBoard = function () {
   let whoseMove = gameLogic.turn;
   gameLogic.currentMove = gameLogic.player[whoseMove];
   let currentMove = gameLogic.currentMove;
-  $('#' + cell).html(gameLogic.currentMove);
+  playerImg();
   gameLogic.turn = (gameLogic.turn + 1);
   $('#toUpdate').find('.move').val(currentMove);
   gameLogic.boardArray[index] = currentMove;
@@ -179,6 +220,7 @@ const onUpdateBoard = function () {
   winCounter();
   api.updateGame()
   .done(ui.success);
+  console.log(gameLogic.whichHouse);
 };
 
 const checkValid = function (event) {

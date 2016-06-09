@@ -6,7 +6,7 @@
 // load manifests
 // scripts
 require('./assets/scripts/index.js');
-
+require('./assets/scripts/auth/gamelogic.js');
 // styles
 require('./assets/styles/index.scss');
 

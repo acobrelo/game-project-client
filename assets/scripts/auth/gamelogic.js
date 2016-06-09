@@ -1,5 +1,5 @@
 'use strict';
-//const events = require('./events.js');
+//const events = require('./events');
 
 let turn = 0;
 //initial board as a constant allows for the board to be reset as such each time a new game is started
@@ -11,6 +11,7 @@ let recentIndex = null;
 
 const player = ['x','o','x','o','x','o','x','o','x'];
 let currentMove = null;
+
 
 let xWins = 0;
 let oWins = 0;
