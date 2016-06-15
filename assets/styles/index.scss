@@ -25,6 +25,36 @@ body {
   background-image: url($hogwarts);
   background-repeat: no-repeat;
   background-size: 150%;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+  background: $purple;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: -15px;
+  width: 105%;
+  height: 75px;
+  position: relative;
+}
+
+li {
+  display: flex;
+  padding-left: 30px;
+}
+
+.top {
+  color: $light-blue;
+  position: absolute;
+  left: 10%;
+}
+
+.btn-primary {
+  background: $purple;
+  border-color: transparent;
+  margin-right: 40px;
 }
 
 .items {

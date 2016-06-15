@@ -19,12 +19,6 @@ const onSignIn = function (event) {
   .done(ui.signInSuccess);
 };
 
-const onSignOut= function (event) {
-  event.preventDefault();
-  api.signOut()
-  .done(ui.signOutSuccess);
-};
-
 const onChangePassword =  function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
@@ -250,6 +244,14 @@ const onCreateGame = function (event) {
 //then increase the turn counter, use that to determine which player is going,
 //then update the current move in the html that communicates with the API
 //and update it all.
+
+const onSignOut= function (event) {
+  event.preventDefault();
+  resetHouses(event);
+  api.signOut()
+  .done(ui.signOutSuccess);
+};
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);

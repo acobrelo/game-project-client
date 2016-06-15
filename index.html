@@ -7,10 +7,14 @@
     </head>
 
     <body class="container-fluid">
+    <ul class="top_bar">
+      <li><section class="top">
+        <h2 id="welcome">Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.</h2>
+      </section></li>
 <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#account-options">
+      <li><button type="button" class="btn btn-primary btn-lg acc-op-button" data-toggle="modal" data-target="#account-options">
         Account Options
-      </button>
+      </button></li>
 <!-- Modal -->
       <div class="modal fade" id="account-options" tabindex="-1" role="dialog" aria-labelledby="accountOptionsLabel">
         <div class="modal-dialog" role="document">
@@ -55,32 +59,9 @@
     </div>
   </div>
 </div>
-<section class="top">
-  <h2 id="welcome">Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.</h2>
-  <h1 id="heading" style="display: none">Hogwarts Tic Tac Toe</h1>
-</section>
-      <div style="display: none" class="container" id="update-game">
-        <section>
-          <div class="board" id="a1"></div>
-          <div class="board" id="a2"></div>
-          <div class="board" id="a3"></div>
-          <div class="board" id="b1"></div>
-          <div class="board" id="b2"></div>
-          <div class="board" id="b3"></div>
-          <div class="board" id="c1"></div>
-          <div class="board" id="c2"></div>
-          <div class="board" id="c3"></div>
-          <form id="toUpdate">
-            <input name="game[cell][index]" class="index" type="text" style="display: none">
-            <input name="game[cell][value]" class="move" type="text" style="display: none">
-            <input name="game[over]" class="over" type="text" style="display: none">
-          </form>
-        </section>
-      </div>
-
-      <button type="button" style="display: none" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#select-house" id="houseSelect">
+    <li><button type="button" style="display: none" class="btn btn-primary btn-lg sel-h-button" data-toggle="modal" data-target="#select-house" id="houseSelect">
         Select House
-      </button>
+      </button></li>
       <div class="modal fade" id="select-house" tabindex="-1" role="dialog" aria-labelledby="selectHouseLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -98,6 +79,28 @@
                 <input type="image" src="./assets/images/hufficon.png" class="house huffle" id="Hufflepuff">
                 </div>
               </div>
+    </ul>
+
+    <h1 id="heading" style="display: none">Hogwarts Tic Tac Toe</h1>
+
+    <div style="display: none" class="container" id="update-game">
+      <section>
+        <div class="board" id="a1"></div>
+        <div class="board" id="a2"></div>
+        <div class="board" id="a3"></div>
+        <div class="board" id="b1"></div>
+        <div class="board" id="b2"></div>
+        <div class="board" id="b3"></div>
+        <div class="board" id="c1"></div>
+        <div class="board" id="c2"></div>
+        <div class="board" id="c3"></div>
+        <form id="toUpdate">
+          <input name="game[cell][index]" class="index" type="text" style="display: none">
+          <input name="game[cell][value]" class="move" type="text" style="display: none">
+          <input name="game[over]" class="over" type="text" style="display: none">
+        </form>
+      </section>
+    </div>
 
             <div class="set">
               <div id="house-set-a" style="display: none"></div>

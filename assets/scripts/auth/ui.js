@@ -12,6 +12,8 @@ const signInSuccess = function (data) {
   app.user = data.user;
   let email = data.user.email;
   $('#account-options').find('.bye').val("");
+  $('#account-options').modal('hide');
+  //$('#select-house').modal('show');
   $('#house-selecta').show();
   $('#change-password').show();
   $('#sign-out').show();
@@ -28,7 +30,8 @@ const signInSuccess = function (data) {
 //call things later, such as in sign out process
 
 const signOutSuccess = function () {
-  $('#house-selecta').hide();
+  $('#account-options').modal('hide');
+  //$('#house-selecta').hide();
   $('#change-password').hide();
   $('#sign-out').hide();
   $('#sign-up').show();
