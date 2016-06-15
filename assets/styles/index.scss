@@ -28,13 +28,19 @@ body {
 }
 
 .items {
-  display: inline-flex;
+  display: flex;
+  justify-content: space-around;
   }
 
+.item {
+  text-align: center;
+}
+
 .house {
-  max-height: 100px;
+  max-height: 150px;
   max-width: auto;
-}  
+  margin: auto;
+}
 
 section {
   @include make-row();
