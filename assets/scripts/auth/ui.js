@@ -21,6 +21,7 @@ const signInSuccess = function (data) {
   $('#index').show();
   $('#scoreboard').show();
   $('#welcome').html("Welcome, " + email);
+  $('#houseSelect').show();
   return app;
 };
 //here, we're basically saying we're calling our data app from now on to
@@ -42,6 +43,7 @@ const signOutSuccess = function () {
   $('.whoWon').hide();
   $('#switch-house').hide();
   $('.scoreboard').hide();
+  $('#houseSelect').hide();
   $('#welcome').html("Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.");
   app.user = null;
 };

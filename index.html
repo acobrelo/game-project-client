@@ -78,37 +78,51 @@
         </section>
       </div>
 
-      <div style="display: none" class="scoreboard">
-        <div class="x-Wins">Player X Score: </div>
-        <div class="o-Wins">Player Y Score: </div>
+      <button type="button" style="display: none" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#select-house" id="houseSelect">
+        Select House
+      </button>
+      <div class="modal fade" id="select-house" tabindex="-1" role="dialog" aria-labelledby="selectHouseLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="selectHouseLabel">Select Your House</h4>
+            </div>
+            <div class="modal-body">
+              <div id="house-selecta" class="selection-box" style="display: none">
+                <div class="items">
+                <h3 class="item" id="choose-house">Player 1, select your house</h3>
+                <input type="image" src="./assets/images/gryficon.png" class="house gryf" id="Gryffindor">
+                <br></br>
+                <input type="image" src="./assets/images/ravicon.png" class="house raven" id="Ravenclaw">
+                <br></br>
+                <input type="image" src="./assets/images/slythicon.png" class="house slyth" id="Slytherin">
+                <br></br>
+                <input type="image" src="./assets/images/hufficon.png" class="house huffle" id="Hufflepuff">
+                </div>
+              </div>
+
+            <div class="set">
+              <div id="house-set-a" style="display: none"></div>
+              <div id="house-set-b" style="display: none"></div>
+            </div>
       </div>
+    </div>
+  </div>
+  </div>
 
-      <div class="warn" style="display: none">Click an empty square to continue</div>
-      <div class="whoWon"></div>
+  <div style="display: none" class="scoreboard">
+    <div class="x-Wins">Player X Score: </div>
+    <div class="o-Wins">Player Y Score: </div>
+  </div>
 
-        <div id="house-selecta" class="selection-box" style="display: none">
-          <div class="items">
-          <h3 class="item" id="choose-house">Player 1, select your house</h3>
-          <button type="button" class="house gryf" id="Gryffindor">Gryffindor</button>
-          <br></br>
-          <button type="button" class="house raven" id="Ravenclaw">Ravenclaw</button>
-          <br></br>
-          <button type="button" class="house slyth" id="Slytherin">Slytherin</button>
-          <br></br>
-          <button type="button" class="house huffle" id="Hufflepuff">Hufflepuff</button>
-          <br></br>
-          </div>
-        </div>
-
-      <div class="set">
-        <div id="house-set-a" style="display: none"></div>
-        <div id="house-set-b" style="display: none"></div>
-      </div>
+  <div class="warn" style="display: none">Click an empty square to continue</div>
+  <div class="whoWon"></div>
 
     <div class="buttons">
     <button type="button" id="switch-house" style="display: none">Switch Houses?</button>
     <br></br>
-    <button type="button" id="create-game" style="display: none">Start Game!</button>
+    <button type="button" id="create-game" class="create-game" style="display: none">Start Game!</button>
     <br></br>
     <button type="button" id="index" style="display: none">Game History</button>
     <br></br>

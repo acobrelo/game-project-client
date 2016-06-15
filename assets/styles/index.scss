@@ -19,55 +19,7 @@ $light-blue: #b6dade;
 
 $hogwarts: 'http://hdwallpapersplace.com/wp-content/uploads/2015/09/hogwarts-logo-harry-potter-abstract-hd-wallpaper.jpg';
 
-.items,
-.scoreboard,
-.warn,
-.whoWon,
-.index-data {
-  color: $light-blue;
-}
-
-.gryf {
-  background-color: $g-color-main;
-  color: $g-text-color;
-  margin-left: 30px;
-  float: left;
-  }
-
-.slyth {
-  background-color: $s-color-main;
-  color: $s-text-color;
-  margin-left: 30px;
-  float: left;
-  }
-
-.raven {
-  background-color: $r-color-main;
-  color: $r-text-color;
-  margin-left: 30px;
-  float: left;
-  }
-
-.huffle {
-  background-color: $h-color-main;
-  color: $h-text-color;
-  margin-left: 30px;
-  float: left;
-  }
-
-button {
-  background-color: $purple;
-  color: $light-blue;
-  float: left;
-}
-
-.buttons {
-  color: $purple;
-  float: left;
-}
-
 body {
-  align-items: right;
   font-family: Times New Roman;
   font-size: 18px;
   background-image: url($hogwarts);
@@ -75,41 +27,14 @@ body {
   background-size: 150%;
 }
 
-h1,
-h2 {
-  font-family: HarryP;
-  font-size: 1.5em;
-  background: $light-blue;
-  border-color: 1px solid $purple;
-  color: $purple;
-  //padding: 10px;
-  margin: auto 15%;
-  text-align: center;
-  display: block;
-  opacity: .95;
-}
+.items {
+  display: inline-flex;
+  }
 
-.top {
-  align-items: center;
-}
-
-.container {
-  margin: 15%;
-  width: 50%;
-  height: 30%;
-  float: right;
-}
-
-.board {
-  background-color: $purple;
-  opacity: .7;
-  color: $light-blue;
-  float: right;
-}
-
-.set {
-  color: $light-blue;
-}
+.house {
+  max-height: 100px;
+  max-width: auto;
+}  
 
 section {
   @include make-row();
