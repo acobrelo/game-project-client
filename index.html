@@ -79,9 +79,30 @@
                 <input type="image" src="./assets/images/hufficon.png" class="house huffle" id="Hufflepuff">
                 </div>
               </div>
+              <button type="button" id="create-game" class="create-game" style="display: none">Start Game!</button>
+              <br></br>
+            </div>
+          </div>
+        </div>
+      </div>
     </ul>
 
+    <div class="top_of_page" style="display: none">
     <h1 id="heading" style="display: none">Hogwarts Tic Tac Toe</h1>
+    <div style="display: none" class="scoreboard">
+      <div class="x-Wins">Player 1 Score: 0</div>
+      <div class="o-Wins">Player 2 Score: 0</div>
+    </div>
+    <div class="buttons">
+    <button type="button" id="switch-house" style="display: none">Switch Houses?</button>
+    <br></br>
+    <button type="button" id="index" style="display: none">Game History</button>
+    <br></br>
+    <div id="displayGameData" class="index-data"></div>
+    <div class="warn" style="display: none">Click an empty square to continue</div>
+    </div>
+  </div>
+
 
     <div style="display: none" class="container" id="update-game">
       <section>
@@ -102,32 +123,6 @@
       </section>
     </div>
 
-            <div class="set">
-              <div id="house-set-a" style="display: none"></div>
-              <div id="house-set-b" style="display: none"></div>
-            </div>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <div style="display: none" class="scoreboard">
-    <div class="x-Wins">Player X Score: </div>
-    <div class="o-Wins">Player Y Score: </div>
-  </div>
-
-  <div class="warn" style="display: none">Click an empty square to continue</div>
   <div class="whoWon"></div>
-
-    <div class="buttons">
-    <button type="button" id="switch-house" style="display: none">Switch Houses?</button>
-    <br></br>
-    <button type="button" id="create-game" class="create-game" style="display: none">Start Game!</button>
-    <br></br>
-    <button type="button" id="index" style="display: none">Game History</button>
-    <br></br>
-    <div id="displayGameData" class="index-data"></div>
-    </div>
-
     </body>
 </html>

@@ -13,8 +13,9 @@ const signInSuccess = function (data) {
   let email = data.user.email;
   $('#account-options').find('.bye').val("");
   $('#account-options').modal('hide');
-  //$('#select-house').modal('show');
   $('#house-selecta').show();
+  $('#create-game').show();
+  $('.top_of_page').show();
   $('#change-password').show();
   $('#sign-out').show();
   $('#sign-up').hide();
@@ -24,6 +25,7 @@ const signInSuccess = function (data) {
   $('#scoreboard').show();
   $('#welcome').html("Welcome, " + email);
   $('#houseSelect').show();
+  $('#select-house').modal('show');
   return app;
 };
 //here, we're basically saying we're calling our data app from now on to
@@ -31,15 +33,15 @@ const signInSuccess = function (data) {
 
 const signOutSuccess = function () {
   $('#account-options').modal('hide');
-  //$('#house-selecta').hide();
   $('#change-password').hide();
   $('#sign-out').hide();
   $('#sign-up').show();
   $('#sign-in').show();
   $('#heading').hide();
   $('#index').hide();
-  $('#house-set-a').hide();
-  $('#house-set-b').hide();
+  $('.top_of_page').hide();
+  $('.o-Wins').html("Player 2 Score: 0");
+  $('.x-Wins').html("Player 1 Score: 0");
   $('#update-game').hide();
   $('#create-game').hide();
   $('#displayGameData').hide();

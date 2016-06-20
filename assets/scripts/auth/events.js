@@ -70,17 +70,11 @@ const houseSet = function () {
   if (xHouse === 'none') {
     xHouse = currentHouse;
     currentHouse = 'none';
-    $('#house-set-a').html("Player 1 is " + xHouse);
-    $('#house-set-a').show();
     $('#choose-house').html("Player 2, select your house");
     $('#' + xHouse).hide();
   } else {
     oHouse = currentHouse;
-    $('#house-set-b').html("Player 2 is " + oHouse);
-    $('#house-set-b').show();
     $('.house').hide();
-    $('#update-game').show();
-    $('#create-game').show();
     $('#choose-house').hide();
     $('#choose-house').html("Player 1, select your house");
   }
@@ -99,10 +93,9 @@ const resetHouses = function (event) {
   currentHouse = 'none';
   $('#choose-house').show();
   $('.house').show();
+  $('#select-house').modal('show');
   xHouse = 'none';
   oHouse = 'none';
-  $('#house-set-a').hide();
-  $('#house-set-b').hide();
 };
 
 let isRowWon = 'unknown';
@@ -162,11 +155,14 @@ const isWinner = function () {
     houseWinner();
     $('.whoWon').html(house + " wins!");
     $('#switch-house').show();
+    //$('.board').html("");
+    // up there, this clears the board after a game is won
     $('.board').off('click');
   } else if ((isRowWon === isColWon) && (isRowWon === isDiaWon) && (gameLogic.turn > 8)) {
     gameLogic.won = 'true';
     tie = 'true';
     $('.whoWon').html("Tie game!");
+    $('#switch-house').show();
     $('.board').off('click');
   } else {
     gameLogic.won = 'false';
@@ -180,10 +176,10 @@ const winCounter = function () {
   let oInc;
   if (($('#toUpdate').find('.over').val() === 'true') && (gameLogic.currentMove === 'x') && (tie === 'false')) {
     xInc = 1 + gameLogic.xWins++;
-    $('.x-Wins').html("Player X Score: " + xInc);
+    $('.x-Wins').html("Player 1 Score: " + xInc);
   } else if (($('#toUpdate').find('.over').val() === 'true') && (gameLogic.currentMove === 'o') && (tie === 'false')) {
     oInc = 1 + gameLogic.oWins++;
-    $('.o-Wins').html("Player O Score: " + oInc);
+    $('.o-Wins').html("Player 2 Score: " + oInc);
   }
   return;
 };
@@ -214,7 +210,6 @@ const onUpdateBoard = function () {
   winCounter();
   api.updateGame()
   .done(ui.success);
-  console.log(gameLogic.whichHouse);
 };
 
 const checkValid = function (event) {

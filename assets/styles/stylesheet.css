@@ -5,3 +5,142 @@ h2 {
 body {
   background-color: #e5e5d8;
 }
+ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+ @import '~bootstrap-sass/assets/stylesheets/bootstrap/';
+@font-face {
+  font-family: HarryP;
+  src: local(Harry_P);
+}
+
+$border-color: #000;
+$g-color-main: #ae0001;
+$g-text-color: #eeba30;
+$s-color-main: #2a623d;
+$s-text-color: #aaa;
+$h-color-main: #e3c907;
+$h-text-color: #372e29;
+$r-color-main: #3b4e8f;
+$r-text-color: #8f7c3b;
+$purple: #4b016e;
+$light-blue: #b6dade;
+
+$hogwarts: 'http://hdwallpapersplace.com/wp-content/uploads/2015/09/hogwarts-logo-harry-potter-abstract-hd-wallpaper.jpg';
+
+
+.whoWon {
+  position: fixed;
+  margin-left: 20%;
+}
+
+.items,
+.scoreboard,
+.warn,
+.whoWon,
+.index-data {
+  color: $light-blue;
+}
+
+.house {
+  //float: left;
+  max-height: 100px;
+  max-width: auto;
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  //margin-right: 30px;
+  }
+
+button {
+  background-color: $purple;
+  color: $light-blue;
+  float: left;
+}
+
+.buttons {
+  color: $purple;
+  float: left;
+}
+
+.create-game {
+  position: fixed;
+}
+
+body {
+  align-items: right;
+  font-family: Times New Roman;
+  font-size: 18px;
+  background-image: url($hogwarts);
+  background-repeat: no-repeat;
+  background-size: 150%;
+}
+
+h1,
+h2 {
+  font-family: HarryP;
+  font-size: 1.5em;
+  background: $light-blue;
+  border-color: 1px solid $purple;
+  color: $purple;
+  margin: auto 15%;
+  text-align: center;
+  display: block;
+  opacity: .95;
+}
+
+.top {
+  align-items: center;
+}
+
+.container {
+  margin: 15%;
+  width: 50%;
+  height: 30%;
+  float: right;
+}
+
+.board {
+  background-color: $purple;
+  opacity: .7;
+  color: $light-blue;
+  float: right;
+  position: relative;
+}
+
+img {
+  height: 150px;
+  align-items: center;
+  width: auto;
+}
+
+.set {
+  color: $light-blue;
+}
+
+section {
+  @include make-row();
+  div {
+    @include make-lg-column(4);
+    @include make-md-column(4);
+    @include make-sm-column(4);
+    @include make-xs-column(4);
+    border: 1px solid $s-text-color;
+    background: $light-blue;
+    height: 16.666vw;
+    opacity: .93;
+  }
+}
+
+@media (max-width: 992px) {
+  body {
+    background-image: 120%;
+  }
+
+  .container {
+    margin: auto 10%;
+    width: auto;
+
+    div {
+      height: 30vw;
+    }
+  }
+}

@@ -1,9 +1,9 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap/';
-@font-face {
-  font-family: HarryP;
-  src: local(Harry_P);
-}
+//@font-face {
+  //font-family: 'Harry_Potter';
+  //src: url('http://www.fontsaddict.com/fontface/harry-potter.TTF');
+//}
 
 $border-color: #000;
 $g-color-main: #ae0001;
@@ -14,13 +14,15 @@ $h-color-main: #e3c907;
 $h-text-color: #372e29;
 $r-color-main: #3b4e8f;
 $r-text-color: #8f7c3b;
-$purple: #4b016e;
+$purple: #2d004d;
 $light-blue: #b6dade;
+$midnight: #000066;
+$gold: #baa20f;
 
 $hogwarts: 'http://hdwallpapersplace.com/wp-content/uploads/2015/09/hogwarts-logo-harry-potter-abstract-hd-wallpaper.jpg';
-
+$banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLJrHBlj-8mp_Je9RS8N3s9ytKWdM8PfvWQC6_zDSzleRO3JUAoA';
 body {
-  font-family: Times New Roman;
+  font-family: 'Harry_Potter';;
   font-size: 18px;
   background-image: url($hogwarts);
   background-repeat: no-repeat;
@@ -31,7 +33,9 @@ body {
 
 ul {
   list-style: none;
-  background: $purple;
+  background-image: url($banner);
+  background-repeat: no-repeat;
+  background-size: 100%;
   display: flex;
   justify-content: flex-end;
   margin-left: -15px;
@@ -46,13 +50,14 @@ li {
 }
 
 .top {
-  color: $light-blue;
+  color: $gold;
   position: absolute;
   left: 10%;
+  font-family: 'Harry_Potter';
 }
 
 .btn-primary {
-  background: $purple;
+  background: none;
   border-color: transparent;
   margin-right: 40px;
 }
@@ -66,14 +71,40 @@ li {
   text-align: center;
 }
 
+.top_of_page {
+  color: $light-blue;
+  background: $purple;
+  opacity: .75;
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 20%;
+  margin-bottom: 10px;
+}
+
 .house {
   max-height: 150px;
   max-width: auto;
   margin: auto;
 }
 
+.whoWon {
+  position: fixed;
+  top: 45%;
+  bottom: 45%;
+  right: 30%;
+  width: 200px;
+}
+
+img {
+  height: 150px;
+  align-items: center;
+  width: auto;
+}
+
 section {
   @include make-row();
+  margin-bottom: 15px;
   div {
     @include make-lg-column(4);
     @include make-md-column(4);
