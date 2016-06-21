@@ -1,9 +1,6 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap/';
-//@font-face {
-  //font-family: 'Harry_Potter';
-  //src: url('http://www.fontsaddict.com/fontface/harry-potter.TTF');
-//}
+@import url('http://fonts.google.com/specimen/Cinzel?selection.family=Cinzel');
 
 $border-color: #000;
 $g-color-main: #ae0001;
@@ -16,50 +13,63 @@ $r-color-main: #3b4e8f;
 $r-text-color: #8f7c3b;
 $purple: #2d004d;
 $light-blue: #b6dade;
-$midnight: #000066;
+$midnight: #006;
 $gold: #baa20f;
 
+$hall: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSJoXtRRkXdczqi5_f_ZKKmx6kPLGOQoDy4YVPrOrT-B4kSza3QNg';
 $hogwarts: 'http://hdwallpapersplace.com/wp-content/uploads/2015/09/hogwarts-logo-harry-potter-abstract-hd-wallpaper.jpg';
 $banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLJrHBlj-8mp_Je9RS8N3s9ytKWdM8PfvWQC6_zDSzleRO3JUAoA';
+$houses: 'http://www.alexanderinteractive.com/holiday/2012/images/holiday/scroll.png';
+
 body {
-  font-family: 'Harry_Potter';;
-  font-size: 18px;
   background-image: url($hogwarts);
   background-repeat: no-repeat;
   background-size: 150%;
-  margin: 0px;
-  padding: 0px;
+  font-family: 'Cinzel';
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
 }
 
 ul {
-  list-style: none;
   background-image: url($banner);
   background-repeat: no-repeat;
   background-size: 100%;
   display: flex;
-  justify-content: flex-end;
-  margin-left: -15px;
-  width: 105%;
   height: 75px;
+  justify-content: flex-end;
+  list-style: none;
+  margin-left: -15px;
   position: relative;
+  width: 105%;
 }
 
 li {
   display: flex;
+  padding-left: 20px;
+}
+
+h2 {
+  padding-bottom: 10px;
   padding-left: 30px;
+  padding-top: 10px;
+  font-size: 40pt;
+  margin: 0;
 }
 
 .top {
   color: $gold;
-  position: absolute;
+  font-family: 'Cinzel';
+  font-size: 12%;
   left: 10%;
-  font-family: 'Harry_Potter';
+  position: absolute;
 }
 
 .btn-primary {
   background: none;
   border-color: transparent;
   margin-right: 40px;
+  padding-left: 20px;
 }
 
 .items {
@@ -71,63 +81,151 @@ li {
   text-align: center;
 }
 
-.top_of_page {
+.create-game,
+.i-d {
+  background-color: $light-blue;
+  color: $purple;
+  margin-left: 40%;
+  margin-top: 10px;
+}
+
+.index-data {
+  margin-left: 30%;
+  margin-top: 10px;
+}
+
+.modal-content {
+  background-color: $purple;
   color: $light-blue;
-  background: $purple;
-  opacity: .75;
-  text-align: center;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 20%;
+}
+
+.scoreboard {
+  background-color: $purple;
+  color: $light-blue;
+  float: left;
+  margin-left: 20px;
+}
+
+.top-of-page {
+  color: $light-blue;
+  display: inline-flex;
+  align-self: center;
   margin-bottom: 10px;
+  margin-left: 27%;
+  margin-right: 20%;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.modal-body {
+  background-color: $purple;
+  color: $light-blue;
 }
 
 .house {
+  margin: auto;
   max-height: 150px;
   max-width: auto;
-  margin: auto;
 }
 
-.whoWon {
+.btn-primary:hover {
+background-color: $purple;
+border: 0px;
+}
+
+.smt {
+  color: $purple;
+  background-color: $light-blue;
+}
+
+.win-display {
+  background-image: url($houses);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 300px;
+  width:200px;
+  color: $midnight;
+  //display: inline-flex;
+  left: 40%;
   position: fixed;
+  //right: 25%;
   top: 45%;
-  bottom: 45%;
-  right: 30%;
-  width: 200px;
+//  text-align: center;
+  .whoWon {
+    color: $purple;
+    height: 30px;
+    display: block;
+    margin-top: 30px;
+    margin-left: 35px;
+    font-size: 16pt;
+  }
+  button {
+    height: 30px;
+    display: inline-block;
+    margin-top: 20px;
+    background: $purple;
+    color: $gold;
+  }
+  .sh {
+    margin-left: 40px;
+  }
+  .cg {
+    margin-right: 20px;
+    margin-left: 55px;
+  }
 }
 
 img {
-  height: 150px;
-  align-items: center;
+  height: 90%;
+  padding-left: 15%;
+  padding-top: 10%;
   width: auto;
 }
 
-section {
+.sec {
   @include make-row();
+  float: clear;
   margin-bottom: 15px;
+  margin-left: 15%;
+  margin-right: 15%;
+
   div {
     @include make-lg-column(4);
     @include make-md-column(4);
     @include make-sm-column(4);
     @include make-xs-column(4);
+    background: $purple;
     border: 1px solid $s-text-color;
-    background: $light-blue;
     height: 16.666vw;
     opacity: .93;
+    width: auto;
   }
 }
 
-@media (max-width: 992px) {
-  body {
-    background-image: 120%;
-  }
+@media (max-width: 950px) {
 
   .container {
-    margin: auto 10%;
     width: auto;
+  }
+
+  h2 {
+    font-size: 10pt;
+  }
+
+  .sec {
+    @include make-row();
+    float: clear;
+    margin-bottom: 15px;
+    margin-left: 15%;
+    margin-right: 15%;
 
     div {
-      height: 30vw;
+      @include make-lg-column(4);
+      @include make-md-column(4);
+      @include make-sm-column(4);
+      @include make-xs-column(4);
+      height: 16.666vw;
     }
   }
-}
+ }

@@ -153,14 +153,18 @@ const isWinner = function () {
   if ((isRowWon !== isColWon) || (isRowWon !== isDiaWon)) {
     gameLogic.won = 'true';
     houseWinner();
+    $('.win-display').show();
+    $('.whoWon').show();
+    $('#keep-houses').show();
     $('.whoWon').html(house + " wins!");
     $('#switch-house').show();
-    //$('.board').html("");
-    // up there, this clears the board after a game is won
     $('.board').off('click');
   } else if ((isRowWon === isColWon) && (isRowWon === isDiaWon) && (gameLogic.turn > 8)) {
     gameLogic.won = 'true';
     tie = 'true';
+    $('.win-display').show();
+    $('#keep-houses').show();
+    $('.whoWon').show();
     $('.whoWon').html("Tie game!");
     $('#switch-house').show();
     $('.board').off('click');
@@ -216,18 +220,21 @@ const checkValid = function (event) {
   event.preventDefault();
   cell = $(this).attr('id');
   let hi = $('#' + cell).html();
-  if (hi === "") {
-    $('.warn').hide();
-   onUpdateBoard();
-  } else {
+  if (hi !== "") {
     $('.warn').show();
+  } else {
+    onUpdateBoard();
+    $('.warn').hide();
   }
+  console.log(hi);
 };
 
 const onCreateGame = function (event) {
   event.preventDefault();
+  $('.win-display').hide();
   $('#update-game').show();
   $('#switch-house').hide();
+  $('#select-house').modal('hide');
   $('.scoreboard').show();
   $('.board').on('click', checkValid);
   api.createGame()
@@ -242,7 +249,12 @@ const onCreateGame = function (event) {
 
 const onSignOut= function (event) {
   event.preventDefault();
-  resetHouses(event);
+  $('.board').html("");
+  currentHouse = 'none';
+  xHouse = 'none';
+  oHouse = 'none';
+  $('#choose-house').show();
+  $('.house').show();
   api.signOut()
   .done(ui.signOutSuccess);
 };
@@ -253,7 +265,7 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
   $('#index').on('click', onIndex);
-  $('#create-game').on('click', onCreateGame);
+  $('.create-game').on('click', onCreateGame);
   $('.house').on('click', onSelectHouse);
   $('#switch-house').on('click', resetHouses);
 };

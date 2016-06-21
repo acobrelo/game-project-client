@@ -8,14 +8,26 @@ const success = (data) => {
   return data;
 };
 
+let count = 0;
+let toUse = 'blank';
+let finished = [];
+let wonGames = [];
+
 const signInSuccess = function (data) {
   app.user = data.user;
   let email = data.user.email;
+  count = 0;
+  toUse = 'blank';
+  finished = [];
+  wonGames = [];
+  $('.warn').hide();
   $('#account-options').find('.bye').val("");
   $('#account-options').modal('hide');
   $('#house-selecta').show();
+  $('.acc-op-button').html("Account Options");
+  $('#gameHist').show();
   $('#create-game').show();
-  $('.top_of_page').show();
+  $('.top-of-page').show();
   $('#change-password').show();
   $('#sign-out').show();
   $('#sign-up').hide();
@@ -23,40 +35,49 @@ const signInSuccess = function (data) {
   $('#heading').show();
   $('#index').show();
   $('#scoreboard').show();
+  $('.whoWon').show();
   $('#welcome').html("Welcome, " + email);
   $('#houseSelect').show();
   $('#select-house').modal('show');
+  $('#displayGameData').show();
+  $('#keep-houses').show();
   return app;
 };
 //here, we're basically saying we're calling our data app from now on to
 //call things later, such as in sign out process
 
 const signOutSuccess = function () {
+  gameLogic.boardArray = ['', '', '', '', '', '','', '', ''];
+  gameLogic.xWins = 0;
+  gameLogic.oWins = 0;
+  $('#gameHist').hide();
   $('#account-options').modal('hide');
+  $('.acc-op-button').html("Welcome to Howarts Tic Tac Toe! Click here to sign in or sign up.");
   $('#change-password').hide();
+  $('.whoWon').hide();
   $('#sign-out').hide();
   $('#sign-up').show();
   $('#sign-in').show();
   $('#heading').hide();
   $('#index').hide();
-  $('.top_of_page').hide();
+  $('.top-of-page').hide();
   $('.o-Wins').html("Player 2 Score: 0");
   $('.x-Wins').html("Player 1 Score: 0");
   $('#update-game').hide();
   $('#create-game').hide();
-  $('#displayGameData').hide();
-  $('.whoWon').hide();
+  $('#displayGameData').html("");
+  $('.win-display').hide();
   $('#switch-house').hide();
   $('.scoreboard').hide();
   $('#houseSelect').hide();
-  $('#welcome').html("Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.");
+  $('#welcome').html("");
+  $('#keep-houses').hide();
+  $('#toUpdate').find('.index').val("");
+  $('#toUpdate').find('.move').val("");
+  $('#toUpdate').find('.over').val("");
+  $('.whoWon').html("");
   app.user = null;
 };
-
-let count = 0;
-let toUse = 'blank';
-let finished = [];
-let wonGames = [];
 
 const finishedArray = function () {
   for (let i = 0; i < count; i++) {
@@ -94,6 +115,7 @@ const newGameSuccess = function (data) {
   $('#toUpdate').find('.move').val("");
   $('#toUpdate').find('.over').val("");
   $('.whoWon').html("");
+  $('.whoWon').hide();
 };
 
 const uiMethods = {

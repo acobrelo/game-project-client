@@ -9,11 +9,11 @@
     <body class="container-fluid">
     <ul class="top_bar">
       <li><section class="top">
-        <h2 id="welcome">Welcome to Howarts Tic Tac Toe! Please sign in or sign up to begin.</h2>
+        <h2 id="welcome"></h2>
       </section></li>
 <!-- Button trigger modal -->
       <li><button type="button" class="btn btn-primary btn-lg acc-op-button" data-toggle="modal" data-target="#account-options">
-        Account Options
+        Welcome to Howarts Tic Tac Toe! Click here to sign in or sign up.
       </button></li>
 <!-- Modal -->
       <div class="modal fade" id="account-options" tabindex="-1" role="dialog" aria-labelledby="accountOptionsLabel">
@@ -30,7 +30,7 @@
               <input type="text" class="bye" name="credentials[email]" placeholder="Enter Email">
               <input type="password" class="bye" name="credentials[password]" placeholder="Enter Password">
               <input type="password" class="bye" name="credentials[password_confirmation]" placeholder="Confirm Password">
-              <input type="submit" name="submit" value="Sign up!">
+              <input type="submit" class="smt" name="submit" value="Sign up!">
             </fieldset>
           </form>
           <form id="sign-in">
@@ -38,13 +38,13 @@
               <p>Sign In</p>
               <input type="text" class="bye" name="credentials[email]" placeholder="Enter Email">
               <input type="password" class="bye" name="credentials[password]" placeholder="Enter Password">
-              <input type="submit" name="submit" value="Sign in!">
+              <input type="submit" class="smt" name="submit" value="Sign in!">
             </fieldset>
           </form>
           <form id="sign-out" style="display: none">
             <fieldset>
               <p>Sign Out</p>
-              <input type="submit" name="submit" value="Sign out!">
+              <input type="submit" class="smt" name="submit" value="Sign out!">
             </fieldset>
           </form>
           <form id="change-password" style="display: none">
@@ -52,7 +52,7 @@
               <p>Change Password</p>
               <input type="password" class="bye" name="passwords[old]" placeholder="Old Password">
               <input type="password" class="bye" name="passwords[new]" placeholder="New Password">
-              <input type="submit" name="submit" value="Change Password">
+              <input type="submit" class="smt" name="submit" value="Change Password">
             </fieldset>
           </form>
       </div>
@@ -85,27 +85,42 @@
           </div>
         </div>
       </div>
+
+      <li><button type="button" style="display: none" class="btn btn-primary btn-lg game-h-button" data-toggle="modal" data-target="#game-history" id="gameHist">
+          Game History
+        </button></li>
+        <div class="modal fade" id="game-history" tabindex="-1" role="dialog" aria-labelledby="gameHistoryLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="gameHistoryLabel">Game History</h4>
+              </div>
+              <div class="modal-body">
+                <div id="game-hist" class="game-info">
+                  <button type="button" class="i-d" id="index">Game History</button>
+                  <div id="displayGameData" class="index-data"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </ul>
 
-    <div class="top_of_page" style="display: none">
-    <h1 id="heading" style="display: none">Hogwarts Tic Tac Toe</h1>
     <div style="display: none" class="scoreboard">
       <div class="x-Wins">Player 1 Score: 0</div>
       <div class="o-Wins">Player 2 Score: 0</div>
     </div>
-    <div class="buttons">
-    <button type="button" id="switch-house" style="display: none">Switch Houses?</button>
-    <br></br>
-    <button type="button" id="index" style="display: none">Game History</button>
-    <br></br>
-    <div id="displayGameData" class="index-data"></div>
-    <div class="warn" style="display: none">Click an empty square to continue</div>
-    </div>
+
+    <div class="top-of-page" style="display: none">
+    <h1 id="heading" style="display: none">Hogwarts Tic Tac Toe</h1>
   </div>
+
+  <div class="warn" style="display: none"></div>
 
 
     <div style="display: none" class="container" id="update-game">
-      <section>
+      <section class="sec">
         <div class="board" id="a1"></div>
         <div class="board" id="a2"></div>
         <div class="board" id="a3"></div>
@@ -123,6 +138,11 @@
       </section>
     </div>
 
+<div class="win-display" style="display: none">
   <div class="whoWon"></div>
+  <button type="button" id="switch-house" class="sh" style="display: none">Switch Houses</button>
+  <button type="button" id="keep-houses" class="create-game cg" style="display: none">Rematch!</button>
+</div>
+
     </body>
 </html>
