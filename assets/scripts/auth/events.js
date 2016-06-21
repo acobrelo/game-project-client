@@ -226,7 +226,6 @@ const checkValid = function (event) {
     onUpdateBoard();
     $('.warn').hide();
   }
-  console.log(hi);
 };
 
 const onCreateGame = function (event) {
