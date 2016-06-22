@@ -77,6 +77,7 @@ const houseSet = function () {
     $('.house').hide();
     $('#choose-house').hide();
     $('#choose-house').html("Player 1, select your house");
+    $('#create-game').show();
   }
 };
 

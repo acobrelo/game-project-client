@@ -26,7 +26,6 @@ const signInSuccess = function (data) {
   $('#house-selecta').show();
   $('.acc-op-button').html("Account Options");
   $('#gameHist').show();
-  $('#create-game').show();
   $('.top-of-page').show();
   $('#change-password').show();
   $('#sign-out').show();
@@ -116,6 +115,7 @@ const newGameSuccess = function (data) {
   $('#toUpdate').find('.over').val("");
   $('.whoWon').html("");
   $('.whoWon').hide();
+  $('#create-game').hide();
 };
 
 const uiMethods = {
