@@ -265,7 +265,6 @@ webpackJsonp([0],[
 	    onUpdateBoard();
 	    $('.warn').hide();
 	  }
-	  console.log(hi);
 	};
 
 	var onCreateGame = function onCreateGame(event) {
